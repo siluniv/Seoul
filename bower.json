@@ -1,8 +1,8 @@
 {
-  "name": "penang-bluedot",
-  "description": "Minimal Blog and Magazine Ghost Theme",
+  "name": "seoul",
+  "description": "Membership and Subscription Theme",
   "authors": [
-    "Aspire Themes"
+    "Mediasphere"
   ],
   "dependencies": {
     "jquery.fitvids": "fitvids#^1.1.0",

@@ -121,7 +121,7 @@
             '!.git/**',
             '!.DS_Store'
         ], {dot: true})
-            .pipe(zip('bluedot-penang.zip'))
+            .pipe(zip('seoul.zip'))
             .pipe(gulp.dest('../'));
         done();
     });
