@@ -1,0 +1,76 @@
+/*------------------------------------*\
+  Components > Author
+\*------------------------------------*/
+
+.c-author {
+  text-align: center;
+  padding: $space-16 0 $space-40;
+
+  @include mq($from: tablet) {
+    padding: $space-24 0 $space-48;
+  }
+
+  @include mq($from: desktop) {
+    padding: $space-32 0 $space-56;
+  }
+
+  &__media {
+    margin: 0 auto;
+    border-radius: 100%;
+    margin-bottom: $space-8;
+    background-color: var(--bg-gray);
+    width: $space-88;
+    height: $space-88;
+  }
+
+  &__image {
+    object-fit: cover;
+    border-radius: 100%;
+    width: $space-88;
+    height: $space-88;
+    box-shadow: 0 0 0 half($space-8) var(--bg-gray);
+  }
+
+  &__title {
+    font-size: $type--h-xs;
+    line-height: $type--h-xs-lh;
+    margin-bottom: 0;
+  }
+
+  &__bio {
+    margin-bottom: 0;
+    margin-top: $space-8;
+    color: var(--color-gray);
+    font-size: $type-md;
+    line-height: $type-md-lh;
+  }
+}
+
+.c-author__links {
+  display: flex;
+  justify-content: center;
+  margin-top: $space-16;
+  color: var(--color-gray);
+
+  &-item {
+    display: flex;
+    align-items: center;
+    font-size: $type-xs;
+    text-transform: uppercase;
+    letter-spacing: $global-letter-spacing;
+
+    &:not(:last-child) {
+      margin-right: $space-8;
+    }
+  }
+
+  &-icon {
+    fill: var(--color-gray);
+    vertical-align: bottom;
+    transition: $global-transition;
+
+    @include attention() {
+      fill: var(--color-brand);
+    }
+  }
+}

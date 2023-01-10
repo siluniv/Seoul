@@ -1,0 +1,69 @@
+/*------------------------------------*\
+  Components > Teaser
+\*------------------------------------*/
+
+.c-teaser-wrapper:not(:last-child) {
+  @include mq($until: desktop) {
+    margin-bottom: $space-32;
+  }
+}
+
+.c-teaser {
+  display: flex;
+  align-items: center;
+
+  &:not(:last-child) {
+    margin-bottom: $space-32;
+
+    @include mq($from: desktop) {
+      margin-bottom: $space-40;
+    }
+  }
+
+  &__media {
+    margin-left: $space-24;
+    background-color: var(--bg-gray);
+  }
+
+  &__content {
+    flex: 1;
+  }
+
+  &__image {
+    display: block;
+    width: $space-88;
+    height: $space-72;
+    object-fit: cover;
+    background-color: var(--bg-gray);
+    border-radius: double($global-border-radius);
+    box-shadow: half($space-8) half($space-8) 0 var(--bg-gray);
+  }
+
+  &__title {
+    display: inline;
+    font-size: $type-md;
+    line-height: $type-md-lh;
+    font-weight: $type-700;
+    border-bottom: 1px solid transparent;
+    transition: border-bottom $global-faster-transition ease-in-out;
+  }
+
+  &__date {
+    display: block;
+    color: var(--color-gray);
+    font-size: $type-xs;
+    line-height: $type-xs-lh;
+    font-weight: $type-500;
+    letter-spacing: $global-letter-spacing;
+    margin-top: $space-8;
+  }
+
+  @include attention() {
+    color: var(--color-text);
+
+    .c-teaser__title {
+      color: var(--color-text);
+      border-bottom: 1px solid var(--color-brand);
+    }
+  }
+}

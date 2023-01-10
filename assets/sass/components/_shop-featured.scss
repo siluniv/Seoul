@@ -1,0 +1,53 @@
+.c-shop-featured {
+  background-color: var(--shop-accent-background-color);
+  color: var(--shop-accent-color);
+  padding: 2.25rem 0;
+
+  .o-grid {
+    display: block;
+    max-width: 1064px;
+    margin: 0 auto;
+    padding: 0 16px;
+
+    @include desktop {
+      padding: 0 32px;
+    }
+  }
+
+  &__carousel {
+    position: relative;
+
+    &--swiper {
+      overflow: hidden;
+    }
+
+    .swiper-button-prev,
+    .swiper-button-next {
+      border-radius: 100%;
+      background-color: #000;
+      width: 32px;
+      height: 32px;
+      color: #fff;
+
+
+      &::after {
+        display: none;
+      }
+
+      @include mq($until: tablet) {
+        display: none;
+      }
+
+    }
+
+    .swiper-button-prev {
+      left: -32px;
+    }
+
+    .swiper-button-next {
+      right: -32px;
+    }
+  }
+
+
+}

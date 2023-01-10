@@ -1,0 +1,82 @@
+<div class="bluedot-product-card">
+  <div class="bluedot-product-card-content">
+    <div class="cover-wrap{{#if feature_image}} have-cover-image{{else}} have-not-cover-image{{/if}}">
+      <div class="cover">
+        {{#if feature_image}}
+        <img
+          srcset="{{img_url feature_image size="s"}} 300w,
+                  {{img_url feature_image size="m"}} 600w,
+                  {{img_url feature_image size="l"}} 1000w,
+                  {{img_url feature_image size="xl"}} 2000w"
+          sizes="(max-width: 800px) 400px,
+              (max-width: 1170px) 1170px,
+                  2000px"
+          src="{{img_url feature_image size="xl"}}"
+          alt="{{title}}"
+        />
+        {{/if}}
+        <a href="{{url}}"></a>
+      </div>
+
+      {{#if primary_author.profile_image}}
+      <div class="profile">
+        <img class="author-profile-image" src="{{img_url primary_author.profile_image}}" alt="{{name}}" />
+      </div>
+      {{/if}}
+    </div>
+
+    <div class="info{{#if payment.type}} have-header{{/if}}">
+      {{#if payment.type}}
+      <div class="header"><span class="label label-{{payment.type}}">{{payment.type_text}}</span></div>
+      {{/if}}
+      <h3><a href="{{url}}">{{title}}</a></h3>
+      <p class="excerpt">{{excerpt}}</p>
+
+  {{#if @member.paid}}
+    {{#if payment.have_price_sale}}
+      <div class="prices have-original-price">
+        <div class="original-price">
+          <span class="notice-text">유료회원할인가</span>
+          {{#if payment.have_price_original}}
+          <span class="price-text">{{price payment.price_original currency="KRW"}}</span>
+          {{else}}
+          <span class="price-text">{{price payment.price currency="KRW"}}</span>
+          {{/if}}
+        </div>
+        <div class="price">
+          <span class="sale-percent">{{payment.price_sale_percent}}%</span>
+          {{price payment.price_sale currency="KRW"}}
+        </div>
+      </div>
+    {{else}}
+      {{#if payment.have_price_original}}
+      <div class="prices have-original-price">
+        <div class="original-price"><span class="price-text">{{price payment.price_original currency="KRW"}}</span></div>
+        <div class="price">
+          <span class="sale-percent">{{payment.price_original_sale_percent}}%</span>
+          {{price payment.price currency="KRW"}}
+        </div>
+      </div>
+      {{else}}
+      <div class="prices">
+        <div class="price">{{price payment.price currency="KRW"}}</div>
+      </div>
+      {{/if}}
+    {{/if}}
+  {{else}}
+      <div class="prices full-price-list">
+        <div class="price">
+          <span class="price-label">무료회원 할인가</span>
+          <span class="price-text">{{price payment.price currency="KRW"}}</span>
+        </div>
+        {{#if payment.have_price_sale}}
+        <div class="price">
+          <span class="price-label">유료회원 할인가 </span>
+          <span class="price-text">{{price payment.price_sale currency="KRW"}}</span>
+        </div>
+        {{/if}}
+      </div>
+  {{/if}}
+    </div>
+  </div>
+</div>

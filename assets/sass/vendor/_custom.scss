@@ -1,0 +1,216 @@
+/*footer*/
+.section-divider {
+  border-bottom: 0.5px solid #000;
+}
+
+.custom-footer-wrap {
+  color: #656059;
+  background-color: #f6f6f6;
+
+  .custom-footer {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    padding-top: 3.08rem;
+    padding-bottom: 3.08rem;
+
+    @include mq($until: tablet) {
+        padding-top:2rem;
+        padding-bottom:2rem;
+    }
+
+    .logo {
+      width: 8.5rem;
+      margin-bottom: 1.66rem;
+
+      background: url("/assets/img/footer/logo.png") no-repeat left center /
+        contain;
+
+      img {
+        visibility: hidden;
+      }
+
+      @include retina-media-query {
+        background-image: url(/assets/img/footer/logo@2x.png);
+      }
+    }
+
+    .f-description {
+      font-size: 0.83rem;
+      line-height: 1.9;
+      font-weight: 500;
+
+      i {
+        display: inline-block;
+        font-style: normal;
+        margin-left: 4px;
+        margin-right: 4px;
+      }
+
+      @include mq($until: tablet) {
+        span {
+          display: block;
+          word-break: keep-all;
+          i {
+            margin-left: 0;
+            margin-right: 0;
+          }
+          i:last-child {
+            display: none;
+          }
+        }
+      }
+    }
+
+    .sns-link {
+      display: flex;
+      width: 80px;
+      height: 30px;
+      justify-content: space-between;
+
+      @include mq($until: tablet) {
+        display: none;
+      }
+    }
+
+    .sns-link > a {
+      display: inline-block;
+    }
+
+    .sns-link > a.twitter {
+      width: 35px;
+      height: 30px;
+      background: url(/assets/img/footer/twitter.png) no-repeat center / contain;
+
+      @include retina-media-query {
+        background-image: url(/assets/img/footer/twitter@2x.png);
+      }
+    }
+
+    .sns-link > a.facebook {
+      width: 30px;
+      height: 30px;
+      background: url(/assets/img/footer/facebook.png) no-repeat center /
+        contain;
+      @include retina-media-query {
+        background-image: url(/assets/img/footer/facebook@2x.png);
+      }
+    }
+  }
+}
+
+
+.custom-footer {
+  background-color: #f6f5f7;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  color: #0a142f;
+
+  .site-data {
+    margin-bottom: 95px;
+
+    @include mq($from: tablet) {
+      margin-bottom: 0px;
+    }
+  }
+
+  .logo {
+    max-width: 180px;
+    margin-bottom: 20px;
+
+    &__img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(100%);
+    }
+  }
+
+  .site-info {
+    font-size: 12px;
+    font-weight: 500;
+    color: #0a142f;
+    opacity: 0.5;
+    line-height: 1.8;
+    margin-bottom: 26px;
+  }
+
+  .sns-link {
+    display: flex;
+    align-items: center;
+    column-gap: 26px;
+
+    &__icon a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  .footer-nav {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 70px;
+    column-gap: 26px;
+
+    @include mq($from: tablet) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    &__menu {
+      &--label {
+        font-weight: 700;
+        font-size: 15px;
+        letter-spacing: -0.2;
+        margin-bottom: 26px;
+      }
+
+      &--list {
+        margin: 0;
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        row-gap: 10px;
+
+        li {
+          opacity: 0.5;
+          font-size: 13px;
+          font-weight: 500;
+          line-height: 1;
+
+          a {
+            display: inline-block;
+            line-height: 1.6;
+          }
+        }
+      }
+    }
+  }
+}
+
+[data-user-color-scheme='dark'] {
+  .custom-footer {
+    background-color: #0A142F;
+
+    .logo {
+      &__img {
+        filter: invert(100%);
+      }
+    }
+
+    .site-info {
+      color: #fff;
+    }
+
+    .sns-link {
+      &__icon svg path {
+        fill: #fff;
+      }
+    }
+
+    .footer-nav {
+      color: #fff;
+    }
+  }
+}

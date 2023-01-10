@@ -1,0 +1,41 @@
+/*------------------------------------*\
+  Components > Banner
+\*------------------------------------*/
+
+.c-banner {
+  background: #3b0759;
+  display: flex;
+  justify-content: center;
+
+  margin-bottom: 60px;
+
+  @include mq($until: tablet) {
+    margin-bottom: 30px;
+  }
+
+  .banner-link {
+    @include retina-media-query {
+      background: url(/assets/img/main_banner/banner@2x.png) no-repeat center /
+        contain;
+
+      @include mq($until: tablet) {
+        background-size: cover;
+      }
+    }
+  }
+
+  img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+    object-position: center;
+
+    @include retina-media-query {
+      visibility: hidden;
+    }
+
+    @include mq($until: tablet) {
+      height: 150px;
+    }
+  }
+}

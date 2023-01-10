@@ -1,0 +1,13 @@
+/*------------------------------------*\
+  Components > Post
+\*------------------------------------*/
+
+.c-post {
+  max-width: 650px;
+  margin: 0 auto;
+  margin-bottom:2.08rem;
+
+  > * + * {
+    margin-top: $space-32;
+  }
+}

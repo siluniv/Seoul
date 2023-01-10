@@ -1,0 +1,20 @@
+// *----------------------------------*\
+//  Settings > Breakpoints
+// *----------------------------------*/
+
+// Breakpoints configs for SassMQ
+//
+// Example usage:
+//
+// @include mq($from: tablet) {}
+
+$mq-breakpoints: (
+  mobile:  320px,
+  tablet:  1024px,
+  desktop: 1280px
+);
+
+$breakpoint-mobile: 390px;
+$breakpoint-tablet: 768px;
+$breakpoint-desktop: 1024px;
+$breakpoint-qhd: 1240px;

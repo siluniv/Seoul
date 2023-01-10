@@ -1,0 +1,34 @@
+<article class="c-product-featured-wrap">
+  <div class="c-product-featured">
+
+    <div class="c-product-featured__media">
+      <a class="c-product-featured__image-wrap" href="{{ url }}">
+        {{#if feature_image}}
+        <img
+          class="c-product-featured__image"
+          src="{{img_url feature_image}}"
+          alt="{{#if feature_image_alt}}{{ feature_image_alt }}{{ else }}{{ title }}{{/if}}"
+        >
+        {{/if}}
+      </a>
+    </div>
+
+    <div class="c-product-featured__content">
+      {{#if payment.type}}
+      <div class="c-product-featured__type c-product-featured__type--{{payment.type}}">{{payment.type_text}}</div>
+      {{/if}}
+      <div class="c-product-featured__text-wrap">
+        <h2 class="c-product-featured__title">
+          <a class="c-product-featured__title-link" href="{{ url }}">{{ title }}</a>
+        </h2>
+        <div class="c-product-featured__excerpt">
+          <p>{{excerpt}}</p>
+        </div>
+      </div>
+      <div class="c-product-featured__more">
+        <a href="{{url}}">자세히보기</a>
+      </div>
+    </div>
+
+  </div>
+</article>

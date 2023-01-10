@@ -1,0 +1,17 @@
+<div class='o-grid'>
+  <div class='o-grid__col o-grid__col--full'>
+    <div class='c-title-bar'>
+      <h3 class='c-title-bar__title'>
+        <a href='{{ @site.url }}/authors' class='c-title-bar__link'>{{t 'Authors'}}</a>
+      </h3>
+    </div>
+  </div>
+</div>
+
+<div class='o-grid'>
+  {{#get 'authors' limit='18' include='count.posts' order='count.posts desc'}}
+    {{#foreach authors}}
+      {{> card-author }}
+    {{/foreach}}
+  {{/get}}
+</div>

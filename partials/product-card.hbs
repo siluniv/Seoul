@@ -1,0 +1,73 @@
+<article class="c-product-card-wrap">
+  <div class="c-product-card">
+    <div class="c-product-card__media">
+      <a class="c-product-card__image-wrap" href="{{ url }}">
+        {{#if feature_image}}
+        <img
+          class="c-product-card__image"
+          src="{{img_url feature_image}}"
+          alt="{{#if feature_image_alt}}{{ feature_image_alt }}{{ else }}{{ title }}{{/if}}">
+        {{/if}}
+      </a>
+    </div>
+    <div class="c-product-card__content">
+      {{#if payment.type}}
+      <div class="c-product-card__type c-product-card__type--{{payment.type}}">{{payment.type_text}}</div>
+      {{/if}}
+
+      <div class="c-product-card__title-wrap">
+        <h2 class="c-product-card__title">
+          <a class="c-product-card__title-link" href="{{ url }}">{{ title }}</a>
+        </h2>
+      </div>
+
+      <div class="c-product-card__meta">
+      {{#if @member.paid}}
+        {{#if payment.have_price_sale}}
+        <div class="c-product-card__price">
+          <div class="label">무료 회원 할인가</div>
+          <div class="price">{{price payment.price_sale currencyFormat="none" currency="KRW"}}{{> won-format number=payment.price_sale}}</div>
+        </div>
+        <div class="c-product-card__price">
+          <div class="label">유료 회원 할인가</div>
+          <div class="price">
+          {{#if payment.have_price_original}}
+            {{price payment.price_original currencyFormat="none" currency="KRW"}}{{> won-format number=payment.price_original}}
+          {{else}}
+            {{price payment.price currencyFormat="none" currency="KRW"}}{{> won-format number=payment.price}}
+          {{/if}}
+          </div>
+        </div>
+        {{else}}
+          {{#if payment.have_price_original}}
+        <div class="c-product-card__price">
+          <div class="label">가격</div>
+          <div class="price">{{price payment.price_original currencyFormat="none" currency="KRW"}}{{> won-format number=payment.price_original}}</div>
+        </div>
+        <div class="c-product-card__price">
+          <div class="label">무료 회원 할인가</div>
+          <div class="price">{{price payment.price currencyFormat="none" currency="KRW"}}{{> won-format number=payment.price}}</div>
+        </div>
+          {{else}}
+        <div class="c-product-card__price">
+          <div class="label">가격</div>
+          <div class="price">{{price payment.price_original currencyFormat="none" currency="KRW"}}{{> won-format number=payment.price_original}}</div>
+        </div>
+          {{/if}}
+        {{/if}}
+      {{else}}
+        <div class="c-product-card__price">
+          <div class="label">무료 회원 할인가</div>
+          <div class="price">{{price payment.price currencyFormat="none" currency="KRW"}}{{> won-format number=payment.price}}</div>
+        </div>
+        {{#if payment.have_price_sale}}
+        <div class="c-product-card__price">
+          <div class="label">유료 회원 할인가</div>
+          <div class="price">{{price payment.price_sale currencyFormat="none" currency="KRW"}}{{> won-format number=payment.price_sale}}</div>
+        </div>
+        {{/if}}
+      {{/if}}
+      </div>
+    </div>
+  </div>
+</article>

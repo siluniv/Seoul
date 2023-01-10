@@ -1,0 +1,150 @@
+.c-product-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  &-wrap {
+    width: 100%;
+    height: 100%;
+
+    @include desktop {
+      border-radius: 4px;
+      overflow: hidden;
+    }
+  }
+
+  &__media {
+    position: relative;
+    overflow: hidden;
+    background-color: var(--bg-gray);
+    margin-bottom: 8px;
+
+    @include desktop {
+      margin-bottom: 0px;
+    }
+  }
+
+  &__image-wrap {
+    display: flex;
+    aspect-ratio: 16 / 10;
+    transition: transform $global-transition ease;
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+
+    @include desktop {
+      background-color: #4a4a4a;
+      color: #fff;
+      padding: 20px;
+    }
+  }
+
+  &__type {
+    background-color: #1fc6ff;
+    color: #fff;
+    font-size: $type-10;
+    font-weight: 700;
+    line-height: 1;
+    display: flex;
+    padding: 7px 10px;
+    width: fit-content;
+    position: absolute;
+    right: 0;
+    top: 0;
+
+    @include desktop {
+      position: relative;
+      margin-bottom: 8px;
+      padding: 8px 12px;
+      border-radius: 2px;
+    }
+  }
+
+  &__title-wrap {
+    flex-grow: 1;
+    margin-bottom: 8px;
+
+    @include desktop { margin-bottom: 20px; }
+  }
+
+  &__title {
+    font-size: $type--h-15;
+    line-height: 1.25;
+    margin-bottom: 0;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+
+    @include tablet {
+      font-size: $type--h-18;
+      font-weight: $type-700;
+      line-height: 1.4;
+    }
+  }
+
+  &__title-link {
+    display: block;
+    border-bottom: 1px solid transparent;
+    transition: border-bottom half($global-transition) ease-in-out;
+
+    @include desktop {
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+    }
+  }
+
+  &__meta {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+
+  }
+
+  &__price {
+    font-size: $type-10;
+    font-weight: $type-700;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    @include tablet { font-size: $type-14; }
+
+
+    .label {
+      color: #00ceff;
+    }
+  }
+
+  @include attention() {
+    .c-product-card__image-wrap {
+      transform: scale(1.01);
+
+      // Disble animation in Edge for support issues
+      @supports (-ms-ime-align: auto) {
+        transform: none;
+      }
+    }
+
+    .c-product-card__title-link {
+      color: var(--color-text);
+      text-decoration: underline;
+
+      @include desktop {
+        color: #fff;
+      }
+    }
+  }
+}

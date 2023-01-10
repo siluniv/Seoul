@@ -1,0 +1,11 @@
+{{!< ../default}}
+
+<div class='o-wrapper'>
+  {{#if @member}}
+    {{!-- Logged in: Redirect home --}}
+    <script>window.location = '{{@site.url}}';</script>
+  {{else}}
+    {{!-- Not logged in: Signin form --}}
+    {{bluedot_signin}}
+  {{/if}}
+</div>

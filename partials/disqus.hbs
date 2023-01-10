@@ -1,0 +1,31 @@
+<button class='c-btn c-btn--full js-load-disqus' onclick='disqus(); return false;'>{{t 'Load Comments' }}</button>
+
+<div id='disqus_thread'></div>
+<script>
+  var disqus_shortname = 'aspirethemes-demos'; // required: replace `aspirethemes-demos` with your Disqus shortname
+
+  // DON'T EDIT BELOW THIS LINE
+  var disqus_config = function () {
+    this.page.url ='{{url absolute="true"}}'
+    this.page.identifier = 'ghost-{{comment_id}}';
+  };
+
+  function disqus() {
+    document.getElementsByClassName('js-load-disqus')[0].classList.add('c-btn--loading');
+
+    var d = document,
+        s = d.createElement('script');
+
+    s.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+
+    s.setAttribute('data-timestamp', + new Date());
+
+    (d.head || d.body).appendChild(s);
+
+    setTimeout(function() {
+      if(document.getElementById("disqus_thread").innerHTML !== '') {
+        document.getElementsByClassName('js-load-disqus')[0].classList.add('u-hidden');
+      }
+    }, 2000);
+  }
+</script>

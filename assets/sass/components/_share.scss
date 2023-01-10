@@ -1,0 +1,42 @@
+/*------------------------------------*\
+  Components > Share Icons
+\*------------------------------------*/
+
+.c-share {
+  display: flex;
+
+  &__item {
+    flex: 1;
+    text-align: center;
+
+    &:not(:last-child) {
+      border-right: $space-8 solid var(--bg-color);
+
+      @include mq($from: tablet) {
+        border-right-width: $space-16;
+      }
+    }
+  }
+
+  &__link {
+    display: block;
+    line-height: $type-xs-lh;
+    padding: half($space-8) $space-8;
+    border-radius: double($global-border-radius);
+    background-color: var(--bg-gray);
+    transition: $global-transition;
+
+    @include mq($from: tablet) {
+      padding: $space-8 $space-24;
+    }
+
+    @include attention() {
+      opacity: .8;
+    }
+  }
+
+  &__icon {
+    fill: var(--color-text);
+    vertical-align: middle;
+  }
+}

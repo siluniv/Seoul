@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang='{{ @site.locale }}'>
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+
+  <title>{{ meta_title }}</title>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+
+  {{> fonts }}
+  {{> compiled/inline-css }}
+  {{> dark-mode-js }}
+
+  <script>
+    var site_url                            = '{{ @site.url }}',
+        pagination_next_page_number         = '{{ pagination.next }}',
+        pagination_available_pages_number   = '{{ pagination.pages }}',
+        pagination_loading_text             = '{{t "Loading" }}',
+        pagination_more_posts_text          = '{{t "More Posts" }}',
+        clipboard_copied_text               = '{{t "Link copied to clipboard" }}';
+  </script>
+
+  <link rel="stylesheet" href="{{asset "public/bluedot.css" hasMinFile="true"}}"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
+  {{> css/default }}
+
+  <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+  <script type="text/javascript">
+      var bluedot_user_id = {{#if @member}}'{{@member.uuid}}'{{else}}null{{/if}};
+  </script>
+
+  {{ ghost_head }}
+</head>
+<body class='{{ body_class }}'>
+
+  <div class='c-site-container'>
+    {{> header }}
+
+    {{{ body }}}
+
+    <footer class="footer">
+      {{#if @site.use_footer}}
+      {{> footer}}
+      {{/if}}
+
+      <div>
+        <div class="o-grid">
+          <div class="o-grid__col o-grid__col--full">
+            {{ bluedot_footer }}
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script src='{{ asset 'js/app.min.js' }}'></script>
+
+  {{{block "scripts"}}}
+
+  {{ ghost_foot }}
+</body>
+</html>

@@ -1,0 +1,17 @@
+{{#match @custom.shop_display_status "=" "on"}}
+  <div class="c-shop">
+    <div class="o-grid">
+      <div class="header">
+        <div class="c-shop__title">Shop</div>
+        <div class="c-shop__tags">
+          {{> shop/tags type="all" }}
+        </div>
+      </div>
+
+      {{> shop/carousel }}
+    </div>
+  </div>
+  <div class="c-shop-more-wrap">
+    <a class="c-shop-more" href="/shop/">Shop 상품 더보기</a>
+  </div>
+  {{/match}}

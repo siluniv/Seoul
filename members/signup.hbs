@@ -1,0 +1,10 @@
+{{!< ../default}}
+
+<div class='o-wrapper'>
+  {{#if @member.paid}}
+    {{!-- Logged in, paying member: Redirect home --}}
+    <script>window.location = '{{@site.url}}';</script>
+  {{else}}
+    {{bluedot_signup}}
+  {{/if}}
+</div>

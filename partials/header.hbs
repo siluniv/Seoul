@@ -1,0 +1,57 @@
+<header class='js-header c-header'>
+  <div class='o-grid o-grid--center'>
+    <div class='o-grid__col o-grid__col--3-4-s o-grid__col--3-4-m o-grid__col--1-3-l'>
+      <div class='c-logo'>
+        {{#if @site.logo}}
+          <a class="light" href='{{ @site.url }}'>
+            <img class='c-logo__img' src='{{ @site.logo }}' alt='{{ @site.title }}'>
+          </a>
+        {{else}}
+          <a class='light c-logo__default' href='{{ @site.url }}'>{{ @site.title }}</a>
+        {{/if}}
+        {{#if @site.logo_sub}}
+          <a class="dark" href='{{ @site.url }}'>
+            <img class='c-logo__img' src='{{ @site.logo_sub }}' alt='{{ @site.title }}'>
+          </a>
+        {{else}}
+          <a class='dark c-logo__default' href='{{ @site.url }}'>{{ @site.title }}</a>
+        {{/if}}
+      </div>
+    </div>
+
+    <div class='o-grid__col o-grid__col--4-4-s o-grid__col--2-3-l'>
+      <nav class='c-nav-wrap'>
+        <ul class='c-nav o-plain-list'>
+          {{ navigation }}
+          {{#if @member}}
+            <li class='c-nav__item'><a href='{{ @site.url }}/account/' data-portal="account" class='c-nav__link'>{{t 'Account' }}</a></li>
+            <li class='c-nav__item'><a href='#signout' class='c-nav__link' data-members-signout>{{t 'Log out' }}</a></li>
+            {{#if @price.use}}
+                {{#unless @member.paid}}
+                  <li class='c-nav__item button-item'><a href='{{ @site.url }}/membership/' class='c-btn c-btn--mini c-btn--action subscribe'>{{t 'Subscribe' }}</a></li>
+                {{/unless}}
+            {{/if}}
+          {{else}}
+            <li class='c-nav__item'><a href='{{ @site.url }}/signin/' class='c-nav__link'>{{t 'Log in' }}</a></li>
+            <li class='c-nav__item button-item'><a href='{{ @site.url }}/membership/' class='c-btn c-btn--mini c-btn--action subscribe'>{{t 'Subscribe' }}</a></li>
+          {{/if}}
+
+          <li class='c-nav__item'>
+            <button class='c-nav__link c-color-mode-btn js-mode-toggle js-mode-toggle-title' title='{{t 'Enable dark mode' }}'>
+              <span class='u-hidden-visually js-mode-toggle-text'>{{t 'Enable dark mode' }}</span>
+              <span class='c-color-mode-btn__icon' aria-hidden='true'></span>
+            </button>
+          </li>
+          <li class='c-nav__item'>
+            {{bluedot_search_button color="--text" size="13"}}
+          </li>
+        </ul>
+      </nav>
+      <div class='js-nav-toggle c-nav-toggle'>
+        <span class='c-nav-toggle__icon'></span>
+      </div>
+    </div>
+  </div>
+</header>
+
+{{> search-form }}

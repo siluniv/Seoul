@@ -1,0 +1,22 @@
+{{> shop/featured }}
+
+<div class="c-shop-category">
+  <div class="o-grid">
+
+    <div class="c-shop-category__tags">
+      {{> shop/tags type=type }}
+    </div>
+
+    {{#get "products" limit="all" filter=(concat "option_type:" type)  order="published_at desc"}}
+    {{#if products}}
+    <div class="bluedot-products-list">
+    {{#foreach products visibility="all"}}
+      {{> product-card-bluedot }}
+    {{/foreach}}
+    </div>
+    {{else}}
+    <div class="c-shop-category__empty">해당 상품이 존재하지 않습니다.</div>
+    {{/if}}
+    {{/get}}
+  </div>
+</div>

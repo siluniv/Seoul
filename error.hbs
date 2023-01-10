@@ -1,0 +1,26 @@
+{{!< default}}
+
+<div class='o-wrapper'>
+  <div class='o-grid'>
+    <div class='o-grid__col o-grid__col--full'>
+      <div class='c-archive'>
+        <h1 class='c-archive__title'>404</h1>
+        <div class='c-archive__description'>{{t 'Page Not Found' }}</div>
+      </div>
+    </div>
+  </div>
+
+  <div class='o-grid'>
+    <div class='o-grid__col o-grid__col--full'>
+      <div class='c-title-bar'>
+        <h3 class='c-title-bar__title'>{{t 'Recent Posts' }}</h3>
+      </div>
+    </div>
+  </div>
+
+  <div class='o-grid js-grid'>
+    {{#get 'posts' limit='6' include='authors'}}
+      {{> loop }}
+    {{/get}}
+  </div>
+</div>

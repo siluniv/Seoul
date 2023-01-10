@@ -1,0 +1,30 @@
+{{!--
+  The Fastest Google Fonts
+  https://csswizardry.com/2020/05/the-fastest-google-fonts/
+--}}
+
+<link rel='preconnect' href='https://fonts.gstatic.com'>
+<link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>
+
+{{#if (eq @site.locale "en") }}
+<link rel='preload' as='style' href='https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap'>
+<link rel='preload' as='style' href='https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;700&display=swap'>
+
+<link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap' media='print' onload="this.media='all'">
+<link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;700&display=swap' media='print' onload="this.media='all'">
+
+<noscript>
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap'>
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;700&display=swap'>
+</noscript>
+{{else}}
+<link rel='preload' as='style' href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<link rel='preload' as='style' href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+<link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap' media='print' onload="this.media='all'">
+<link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Anton&display=swap' media='print' onload="this.media='all'">
+
+
+<noscript>
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap'>
+</noscript>
+{{/if}}

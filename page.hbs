@@ -1,0 +1,25 @@
+{{!< default}}
+
+{{#post}}
+
+<main class='o-wrapper'>
+  <article>
+    {{> post-header }}
+
+    <div class='o-grid'>
+      <div class='o-grid__col o-grid__col--center o-grid__col--4-4-s'>
+        <div class='c-{{ post_class }}'>
+          <div class='c-content'>
+            {{ content }}
+          </div>
+
+          {{#unless access}}
+            {{> page-upgrade-cta }}
+          {{/unless}}
+        </div>
+      </div>
+    </div>
+  </article>
+</main>
+
+{{/post}}

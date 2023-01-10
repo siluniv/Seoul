@@ -1,0 +1,62 @@
+<header>
+  {{#if feature_image}}
+    <div class='o-grid'>
+      <div class='o-grid__col o-grid__col--center o-grid__col--4-4-m'>
+        <figure class='c-post-media'>
+          <div class='c-post-media__wrap'>
+            <img
+              alt="{{#if feature_image_alt}}{{ feature_image_alt }}{{ else }}{{ title }}{{/if}}"
+              class='c-post-media__image lazyload'
+              data-srcset='
+                {{ img_url feature_image size='ml' }} 320w,
+                {{ img_url feature_image size='lg' }} 636w,
+                {{ img_url feature_image size='xl' }} 1272w,
+                {{ img_url feature_image size='xxl' }} 2640w'
+              sizes='(min-width: 1480px) 1320px, (min-width: 640px) 90.73vw, calc(100vw - 32px)'
+              data-src='{{ img_url feature_image size='xxl' }}'
+            >
+          </div>
+          {{#if feature_image_caption}}
+            <figcaption class='c-post-media__caption'>{{ feature_image_caption }}</figcaption>
+          {{/if}}
+        </figure>
+      </div>
+    </div>
+  {{/if}}
+
+  <div class='o-grid'>
+    <div class='o-grid__col o-grid__col--center o-grid__col--4-4-s'>
+      <div class='c-post-header'>
+        <h1 class='c-post-header__title'>{{ title }}</h1>
+        {{#if custom_excerpt}}
+          <p class='c-post-header__excerpt'>{{ custom_excerpt }}</p>
+        {{/if}}
+
+        {{#is 'post'}}
+          <div class='c-post-header__meta'>
+            {{#primary_author}}
+              <a href='{{ url }}' class='c-post-header__author'>
+                {{#if profile_image}}
+                  <div class='c-post-header__author--image-wrap'>
+                    <img class='c-post-header__author--image lazyload' data-src='{{ img_url profile_image size='xxs' }}' alt='{{ name }}' width='24' height='24'>
+                  </div>
+                {{/if}}
+                {{ name }}
+              </a>
+            {{/primary_author}}
+            <time class='c-post-header__date' datetime='{{ date format='YYYY-MM-DD' }}' title='{{ date format=(t 'DD MMM YYYY') }}'>{{ date format=(t 'DD MMM YYYY') }}</time>
+
+            {{#if (not @site.comment_read_permission "none")}}
+                {{#if comment_count}}
+                <span class='c-post-header__comment comment-count-{{comment_count}}'><a class="byline-comments" href="{{url}}comments" data-portal="comment" data-post-uuid="{{uuid}}">댓글 {{comment_count}}개 보기</a></span>
+                {{else}}
+                <span class='c-post-header__comment comment-count-0'><a class="byline-comments" href="{{url}}comments" data-portal="comment" data-post-uuid="{{uuid}}">댓글 남기기</a></span>
+                {{/if}}
+            {{/if}}
+            
+          </div>
+        {{/is}}
+      </div>
+    </div>
+  </div>
+</header>

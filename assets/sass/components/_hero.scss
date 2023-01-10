@@ -1,0 +1,90 @@
+/*------------------------------------*\
+  Components > Hero
+\*------------------------------------*/
+
+.c-hero {
+  margin-bottom: $space-32;
+  background-color: var(--bg-gray);
+  background-image: var(--bg-gradient);
+
+  @include mq($from: tablet) {
+    padding: $space-32 0;
+  }
+
+  @include mq($from: desktop) {
+    padding: $space-48 0;
+  }
+
+  &__container {
+    display: flex;
+
+    @include mq($until: tablet) {
+      flex-direction: column-reverse;
+    }
+
+    @include mq($from: tablet) {
+      width: 100%;
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  .c-subscribe-form {
+    margin-top: $space-16;
+  }
+
+  .c-subscribe-form__input[type=email] {
+    background-color: var(--bg-color);
+  }
+}
+
+.c-hero__content {
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  padding: $space-32 0;
+  font-size: $type--h-xxs;
+  line-height: $type--h-xxs-lh;
+
+  @include mq($from: desktop) {
+    font-size: $type--h-xs;
+    line-height: $type--h-xs-lh;
+    padding-right: $space-96;
+  }
+
+  > * + * {
+    margin-top: $space-8;
+  }
+
+  h2,
+  h3 {
+    font-size: $type--h-xs;
+    line-height: $type--h-xs-lh;
+
+    @include mq($from: desktop) {
+      font-size: $type--h-lg;
+      line-height: $type--h-lg-lh;
+    }
+  }
+
+  p {
+    font-size: $type--h-xxs;
+    line-height: $type--h-xxs-lh;
+
+    @include mq($from: desktop) {
+      font-size: $type--h-xs;
+      line-height: $type--h-xs-lh;
+    }
+  }
+}
+
+.c-hero-image {
+  @include mq($until: tablet) {
+    padding-top: $space-32;
+  }
+
+  @include mq($from: tablet) {
+    max-height: 50vh;
+    margin-left: auto;
+  }
+}

@@ -1,0 +1,18 @@
+{{#has visibility='members'}}
+  <aside class='c-post-upgrade-cta'>
+    <h4 class='c-post-upgrade-cta__title'>{{t 'This post is for subscribers only'}}</h4>
+    <a class='c-btn c-btn--action' href='{{ @site.url }}/signup/'>{{t 'Subscribe Now'}}</a>
+    <div><span class='u-type-xs u-type-500'>{{t 'Already have an account?'}} <a href='{{ @site.url }}/signin/' class='u-link'>{{t 'Log in'}}</a></span></div>
+  </aside>
+{{/has}}
+
+{{#has visibility='paid'}}
+  <aside class='c-post-upgrade-cta'>
+    <h4 class='c-post-upgrade-cta__title'>{{t 'This post is for paying subscribers only'}}</h4>
+    <a class='c-btn c-btn--action' href='{{ @site.url }}/subscribe/'>{{t 'Subscribe Now'}}</a>
+
+    {{#unless @member}}
+      <div><span class='u-type-xs u-type-500'>{{t 'Already have an account?'}} <a href='{{ @site.url }}/signin/' class='u-link'>{{t 'Log in'}}</a></span></div>
+    {{/unless}}
+  </aside>
+{{/has}}

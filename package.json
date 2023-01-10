@@ -1,0 +1,118 @@
+{
+  "name": "seoul",
+  "description": "Membership and Subscription Theme",
+  "version": "0.0.1",
+  "engines": {
+    "ghost": ">=4.0.0"
+  },
+  "keywords": [
+    "ghost-theme"
+  ],
+  "scripts": {
+    "postinstall": "bower install"
+  },
+  "dependencies": {
+    "@primer/css": "^15.2.0",
+    "bower": "^1.8.13",
+    "clipboard": "^2.0.8",
+    "concat": "^3.0.0",
+    "evil-icons": "^1.10.1",
+    "fs": "0.0.2",
+    "gulp-autoprefixer": "^4.1.0",
+    "gulp-clean-css": "^3.10.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-jshint": "^2.1.0",
+    "gulp-plumber": "^1.2.1",
+    "gulp-rename": "^1.4.0",
+    "gulp-replace": "^0.6.1",
+    "gulp-size": "^3.0.0",
+    "gulp-uglify": "^3.0.2",
+    "gulp-util": "^3.0.7",
+    "headroom.js": "^0.10.4",
+    "jshint": "^2.12.0",
+    "jshint-stylish": "^2.2.0",
+    "lazysizes": "^5.3.0",
+    "lunr": "^0.7.2",
+    "lunr-languages": "^1.4.0",
+    "normalize.css": "^8.0.1",
+    "prismjs": "^1.23.0",
+    "run-sequence": "^2.2.1",
+    "sass-mq": "^5.0.1",
+    "swiper": "^8.3.2"
+  },
+  "devDependencies": {
+    "dart-sass": "^1.25.0",
+    "gulp": "^4.0.2",
+    "gulp-rtlcss": "^1.4.1",
+    "gulp-sass": "^5.1.0",
+    "gulp-zip": "^4.2.0",
+    "sass": "^1.49.7"
+  },
+  "author": {
+    "name": "Mediasphere",
+    "email": "partner@mediasphere.kr",
+    "url": "https://www.mediasphere.kr/"
+  },
+  "config": {
+    "custom": {
+      "shop_point_background_color": {
+        "group": "shop",
+        "type": "color",
+        "default": "#3c7eff",
+        "title": "숍 포인트 배경색"
+      },
+      "shop_point_color": {
+        "group": "shop",
+        "type": "color",
+        "default": "#000000",
+        "title": "숍 포인트 글자색"
+      },
+      "shop_display_status": {
+        "group": "shop",
+        "type": "select",
+        "options": [
+          "on",
+          "off"
+        ],
+        "default": "on",
+        "title": "숍 상품 노출하기",
+        "description": "사이트에서 숍 목록을 표시하려면 on 으로 활성화 하세요."
+      },
+      "shop_posts_per_page": {
+        "group": "shop",
+        "type": "select",
+        "options": ["2","3","4","5","6","7","8","9","10","11","12","13","14","15","16"],
+        "default": "10",
+        "title": "표시할 숍 상품 수",
+        "description": "숍 목록에 표시할 상품의 수를 선택하세요."
+      }
+    },
+    "posts_per_page": 12,
+    "image_sizes": {
+      "xxs": {
+        "width": 48
+      },
+      "xs": {
+        "width": 128
+      },
+      "sm": {
+        "width": 176
+      },
+      "md": {
+        "width": 320
+      },
+      "ml": {
+        "width": 588
+      },
+      "lg": {
+        "width": 636
+      },
+      "xl": {
+        "width": 1272
+      },
+      "xxl": {
+        "width": 2640
+      }
+    }
+  }
+}

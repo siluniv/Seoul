@@ -1,0 +1,22 @@
+/*------------------------------------*\
+  Trumbs > Alerts
+\*------------------------------------*/
+
+.u-alert {
+  font-weight: $type-500;
+  font-size: $type-xs;
+  line-height: $type-xs-lh;
+  font-family: $type-sans-serif;
+}
+
+.u-alert--success {
+  color: var(--color-success);
+}
+
+.u-alert--invalid {
+  color: var(--color-error);
+}
+
+.u-alert--error {
+  color: var(--color-error);
+}

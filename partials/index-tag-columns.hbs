@@ -1,0 +1,68 @@
+<!-- Change `work` with your tag name -->
+{{#get 'posts' filter='tags:work' limit='4' as |posts|}}
+  {{#if posts}}
+    <div class='c-teaser-wrapper o-grid__col o-grid__col--4-4-s o-grid__col--2-4-m o-grid__col--1-3-l'>
+      <div class='o-grid'>
+        <div class='o-grid__col o-grid__col--full'>
+          <div class='c-title-bar'>
+            <h3 class='c-title-bar__title'>
+              <a href='{{ @site.url }}/tag/work' class='c-title-bar__link'>Work</a>
+            </h3>
+          </div>
+        </div>
+
+        <div class='o-grid__col'>
+        {{#foreach posts}}
+          {{> teaser }}
+        {{/foreach}}
+        </div>
+      </div>
+    </div>
+  {{/if}}
+{{/get}}
+
+<!-- Change `lifestyle` with your tag name -->
+{{#get 'posts' include='authors' filter='tags:inspiration' limit='4' as |posts|}}
+  {{#if posts}}
+    <div class='c-teaser-wrapper o-grid__col o-grid__col--4-4-s o-grid__col--2-4-m o-grid__col--1-3-l'>
+      <div class='o-grid'>
+        <div class='o-grid__col o-grid__col--full'>
+          <div class='c-title-bar'>
+            <h3 class='c-title-bar__title'>
+              <a href='{{ @site.url }}/tag/inspiration' class='c-title-bar__link'>Inspiration</a>
+            </h3>
+          </div>
+        </div>
+
+        <div class='o-grid__col'>
+        {{#foreach posts}}
+          {{> teaser }}
+        {{/foreach}}
+        </div>
+      </div>
+    </div>
+  {{/if}}
+{{/get}}
+
+<!-- Change `lifestyle` with your tag name -->
+{{#get 'posts' include='authors' filter='tags:education' limit='4' as |posts|}}
+  {{#if posts}}
+    <div class='c-teaser-wrapper o-grid__col o-grid__col--4-4-s o-grid__col--2-4-m o-grid__col--1-3-l'>
+      <div class='o-grid'>
+        <div class='o-grid__col o-grid__col--full'>
+          <div class='c-title-bar'>
+            <h3 class='c-title-bar__title'>
+              <a href='{{ @site.url }}/tag/education' class='c-title-bar__link'>Education</a>
+            </h3>
+          </div>
+        </div>
+
+        <div class='o-grid__col'>
+        {{#foreach posts}}
+          {{> teaser }}
+        {{/foreach}}
+        </div>
+      </div>
+    </div>
+  {{/if}}
+{{/get}}

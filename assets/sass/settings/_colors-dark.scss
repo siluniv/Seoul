@@ -1,0 +1,41 @@
+// *----------------------------------*\
+//  Settings > Colors Dark
+// *----------------------------------*/
+
+@mixin colors-dark {
+  --color-mode:    'dark';
+  --color-brand:   #04a6d7;
+  --color-white:   #FFFFFF;
+  --color-dark:    #010101;
+  --color-text:    #FFFFFF;
+  --color-gray:    #E5EFF5;
+  --color-error:   #CC3C64;
+  --color-success: #1BA672;
+  --color-border:  #383B40;
+
+  --bg-color:        #111016;
+  --bg-gray:         #18181d;
+  --bg-white:        var(--color-white);
+  --bg-transparent:  rgba(31, 32, 35, .7);
+
+  --bg-post-card:      var(--bg-gray);
+  --bg-tag-list:       linear-gradient(to left, var(--bg-color), rgba(31, 32, 35, 0));
+  --bg-gradient:       --bg-gray;
+
+  --color-mode-icon: var(--icon-sun);
+  --color-mode-icon-filter: var(--icon-sun-filter);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-mode: 'dark';
+  }
+
+  :root:not([data-user-color-scheme]) {
+    @include colors-dark;
+  }
+}
+
+[data-user-color-scheme='dark'] {
+  @include colors-dark;
+}

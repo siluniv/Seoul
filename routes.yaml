@@ -1,0 +1,18 @@
+routes:
+  /membership/: members/membership
+  /signup/: members/signup
+  /signin/: members/signin
+  /account/: members/account
+  /shop/online-class/: shop/online-class
+  /shop/webinar/: shop/webinar
+  /shop/digital-book/: shop/digital-book
+  /shop/etc/: shop/etc
+
+collections:
+  /:
+    permalink: /{slug}/
+    template: index
+
+taxonomies:
+  tag: /tag/{slug}/
+  author: /author/{slug}/

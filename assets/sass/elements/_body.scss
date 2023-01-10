@@ -1,0 +1,21 @@
+/*------------------------------------*\
+  Elements > Page
+\*------------------------------------*/
+
+body {
+  direction: ltr;
+  color: var(--color-text);
+  font-size: $type-md;
+  font-family: $type-sans-serif;
+  line-height: $line-height-base;
+  background-color: var(--bg-color);
+  margin-top: $space-72;
+
+  -webkit-font-smoothing: antialiased;
+   -moz-osx-font-smoothing: grayscale;
+
+
+  @include mq($from: desktop) {
+    margin-top: $space-80;
+  }
+}

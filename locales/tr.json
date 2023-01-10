@@ -1,0 +1,77 @@
+{
+  "Loading": "Yükleniyor",
+  "More Posts": "Daha Fazla Gönderi",
+
+  "Recent Posts": "Son Gönderiler",
+  "Featured Post": "Öne Çıkan Gönderiler",
+  "Page Not Found": "Sayfa Bulunamadı",
+  "Load Comments": "Yorumları Yükle",
+  "You might also like": "Bunları da beğenebilirsin",
+  "Tags": "Etiketler",
+  "Authors": "Yazarlar",
+  "Navigation": "Sayfalar",
+  "Published with {ghostLink} & {themeLink}": "{ghostLink} ve {themeLink} ile oluşturuldu",
+
+  "Share on Twitter": "Twitter'da Paylaş",
+  "Share on Facebook": "Facebook'ta Paylaş",
+  "Share on LinkedIn": "LinkedIn'de Paylaş",
+  "Share on Pinterest": "Pinterest'te Paylaş",
+  "Share via Email": "E-Posta ile Paylaş",
+  "Copy link": "Bağlantıyı kopyala",
+  "Link copied to clipboard": "Bağlantı panoya kopyalandı",
+
+  "Search": "Ara",
+  "Search {siteTitle}": "{siteTitle} sitesinde Ara",
+  "Type to Search": "Aramak için Yazın",
+  "Enable dark mode": "Gece modunu aktif et",
+
+  "Paid": "Ücretli",
+  "Members": "Üyeler",
+  "Public": "Herkese Açık",
+
+  "Account": "Hesap",
+  "Log in": "Giriş Yap",
+  "Log out": "Çıkış Yap",
+  "Continue": "Devam Et",
+  "Subscribe": "Abone Ol",
+  "Subscribe Now": "Şimdi Abone Ol",
+  "Your email ": "E-Posta adresiniz",
+  "Please check your inbox and click the link to complete the login.": "Lütfen gelen kutunuzu kontrol edin ve girişi tamamlamak için bağlantıya tıklayın.",
+  "Please check your inbox and click the link to confirm your subscription.": "Lütfen gelen kutunuzu kontrol edin ve aboneliğinizi onaylamak için bağlantıya tıklayın.",
+  "Please enter a valid email address!": "Lütfen geçerli bir e-posta adresi girin!",
+  "An error occurred, please try again later.": "Bir hata meydana geldi, lütfen tekrar deneyin.",
+
+  "Already have an account?": "Zaten bir hesabınız var mı?",
+  "Don't have an account yet?": "Henüz bir hesabınız yok mu?",
+
+  "This post is for paying subscribers only": "Bu gönderi yalnızca ücretli aboneler içindir",
+  "This post is for subscribers only": "Bu gönderi yalnızca aboneler içindir",
+  "This page is for paying subscribers only": "Bu sayfa yalnızca ücretli aboneler içindir",
+  "This page is for subscribers only": "Bu sayfa yalnızca aboneler içindir",
+
+  "Become a subscriber to access all of our content.": "Bültene abone olun ve son güncellemeleri gelen kutunuza alın.",
+
+  "Choose your subscription": "Aboneliğinizi seçin",
+  "Unlock full access to {siteTitle} and see the entire library of members-only content & updates.": "{siteTitle} sitesindeki abonelere özel içeriklere erişmek için abonelik planınızı seçin ve hiçbir şeyi kaçırmayın.",
+  "Subscribe to {siteTitle}": "{siteTitle} sitesine Kayıt Olun",
+  "Choose this plan": "Bu planı seçin",
+  "Monthly": "Aylık",
+  "Yearly": "Yıllık",
+  "month": "ay",
+  "year": "yıl",
+
+  "Welcome back!": "Tekrar Hoşgeldiniz!",
+  "Log in to your account again": "Hesabınıza tekrar Giriş Yapın",
+  "Send login link": "Giriş bağlantısını gönder",
+
+  "Nice, you're a subscriber!": "Güzel, abonesiniz!",
+  "Your subscription will expire on": "Aboneliğiniz şu tarihte sona erecek",
+  "Your plan": "Planınız",
+  "Card": "Kart",
+  "Expires": "Süre Sonu",
+  "Next bill date": "Bir sonraki fatura tarihi",
+  "Edit billing info": "Ödeme bilgisini düzenle",
+  "You have an active {siteTitle} account with access to all posts.": "{siteTitle} sitesindeki tüm içeriklere erişimi olan bir hesaba sahipsiniz.",
+  "You're a subscriber to free members updates": "Ücretsiz abonelik içeriklerine abonesiniz",
+  "You are subscribed to free updates from {siteTitle}, but don't have a paid subscription to read all the posts.": "{siteTitle} sitesindeki ücretsiz içeriklere abonesiniz, ancak tüm içeriklere erişebilmek için ücretli abonelik edinmeniz gerekmektedir."
+}

@@ -1,0 +1,63 @@
+/*------------------------------------*\
+  Components > Logo
+\*------------------------------------*/
+
+.c-logo {
+  &__link {
+    display: block;
+    line-height: 1;
+    font-weight: $type-700;
+    font-size: double($type-xs);
+    transition: color $global-faster-transition ease-in-out;
+
+    @include attention() {
+      color: var(--color-brand);
+    }
+  }
+
+  // &__default {
+  //     display:block;
+  //     background:url(/assets/img/layout/logo.png) no-repeat left center / contain;
+  //     text-indent:-1000px;
+  //     overflow:hidden;
+  //     width:208px;
+  //     height:32px;
+      
+      
+  //     @include mq($until: tablet) {
+  //       height:24px;
+  //     }
+
+  //     @include retina-media-query { 
+  //       background-image:url(/assets/img/layout/logo@2x.png);
+  //     }
+
+  //     @media (prefers-color-scheme: dark) {
+  //       background-image:url(/assets/img/layout/logo_for_dark.png);
+
+  //       @include retina-media-query { 
+  //         background-image:url(/assets/img/layout/logo_for_dark@2x.png);
+  //       }
+  //     }
+
+  //     [data-user-color-scheme=light] & {
+  //       background-image:url(/assets/img/layout/logo.png);
+
+  //       @include retina-media-query { 
+  //         background-image:url(/assets/img/layout/logo@2x.png);
+  //       }
+  //     }
+
+  //     [data-user-color-scheme=dark] & {
+  //       background-image:url(/assets/img/layout/logo_for_dark.png);
+
+  //       @include retina-media-query { 
+  //         background-image:url(/assets/img/layout/logo_for_dark@2x.png);
+  //       }
+  //     }
+  // }
+
+  &__img {
+    max-height: $space-32;
+  }
+}

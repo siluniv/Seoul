@@ -1,0 +1,11 @@
+<div class='o-grid__col o-grid__col--full'>
+  {{#get 'tags' limit='all'}}
+    <div class='c-tags-list-wrap'>
+      <ul class='c-tags-list o-plain-list dragscroll'>
+        {{#foreach tags}}
+          <li><a href='{{ url }}'>{{ name }}</a></li>
+        {{/foreach}}
+      </ul>
+    </div>
+  {{/get}}
+</div>

@@ -1,0 +1,81 @@
+/*------------------------------------*\
+  Components > Subscribe Form
+\*------------------------------------*/
+
+.c-subscribe {
+  text-align: center;
+  padding: $space-24;
+  border-radius: $space-8;
+  background-color: var(--bg-gray);
+  background-image: var(--bg-gradient);
+
+  &__icon {
+    fill: var(--color-gray);
+  }
+
+  @include mq($from: tablet) {
+    padding: $space-40;
+  }
+
+  @include mq($from: desktop) {
+    padding: $space-56;
+  }
+
+  .c-subscribe-form__input[type='email'] {
+    background-color: var(--bg-color);
+  }
+}
+
+.c-subscribe-form {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+
+  .form-group {
+    display: flex;
+  }
+
+  &__btn {
+    flex: 3;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+
+  &__input[type='email'] {
+    border: 0;
+    margin: 0;
+    padding-left: ($space-24);
+    background-color: var(--bg-gray);
+    border-top-left-radius: $space-32;
+    border-bottom-left-radius: $space-32;
+    min-width: 1px; // Firefox issue: https://stackoverflow.com/a/27460682/558777
+
+    &:focus {
+      border-color: transparent;
+    }
+  }
+
+  .u-alert {
+    display: none;
+  }
+
+  .c-btn {
+    @extend .c-btn--loading;
+
+    &:after {
+      display: none;
+    }
+  }
+
+  &.loading .c-btn {
+    &:after {
+      display: block;
+    }
+  }
+
+  &.success .u-alert--success,
+  &.invalid .u-alert--invalid,
+  &.error   .u-alert--error  {
+    display: block;
+  }
+}

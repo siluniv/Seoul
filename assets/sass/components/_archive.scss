@@ -1,0 +1,50 @@
+/*------------------------------------*\
+  Components > Archive
+\*------------------------------------*/
+
+.c-archive {
+  text-align: center;
+  padding: $space-16 0 $space-40;
+
+  @include mq($from: tablet) {
+    padding: $space-24 0 $space-48;
+  }
+
+  @include mq($from: desktop) {
+    padding: $space-32 0 $space-56;
+  }
+
+  &__title {
+    margin-bottom: 0;
+    font-size: $type--h-sm;
+    line-height: $type--h-sm-lh;
+
+    @include mq($from: tablet) {
+      font-size: $type--h-md;
+      line-height: $type--h-md-lh;
+    }
+
+    @include mq($from: desktop) {
+      font-size: $type--h-lg;
+      line-height: $type--h-lg-lh;
+    }
+  }
+
+  &__description {
+    color: var(--color-gray);
+    font-size: $type--h-xxxs;
+    line-height: $type--h-xxs-lh;
+    margin-top: $space-24;
+    margin-bottom: 0;
+    word-break: keep-all;
+
+    @include mq($from: desktop) {
+      font-size: $type--h-xxs;
+      line-height: $type--h-xs-lh;
+    }
+
+    &:empty {
+      display: none;
+    }
+  }
+}
