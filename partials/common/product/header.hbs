@@ -1,0 +1,9 @@
+{{#if payment_status.is_paid}}
+  {{#if payment.is_online_class}}
+{{> common/product/header-vod }}
+  {{else}}
+{{> common/product/header-feature-image }}
+  {{/if}}
+{{else}}
+{{> common/product/header-feature-image }}
+{{/if}}

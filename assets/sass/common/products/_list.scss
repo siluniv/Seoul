@@ -1,0 +1,22 @@
+.s-products-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+
+  @include mq($from: landscape) {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 60px 40px;
+  }
+
+  @include mq($from: desktop) {
+    // grid-template-columns: repeat(4, 1fr);
+  }
+
+  &__empty {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 20vh;
+  }
+}

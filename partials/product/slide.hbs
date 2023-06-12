@@ -1,0 +1,77 @@
+{{#get "products" filter="featured:true" include="tags" limit=@config.posts_per_page order="published_at desc"}}
+{{#if products}}
+<div class="c-product-slide__outer">
+  <div class="c-product-slide__swiper-button c-product-slide__swiper-button--left">
+    <div class="swiper-button swiper-button-prev">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-6 h-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+      </svg>
+    </div>
+  </div>
+  <div class="c-product-slide__inner">
+    <div class="c-product-slide__swiper">
+      <div class="swiper">
+        <div class="swiper-wrapper">
+        {{#foreach products}}
+          <div class="swiper-slide">
+
+            <div class="c-product-slide">
+              <div class="c-product-slide__media">
+                <a href="{{url}}" class="c-product-slide__link--cover"></a>
+                {{#if feature_image}}
+                <img
+                  alt="{{#if feature_image_alt}}{{ feature_image_alt }}{{ else }}{{ title }}{{/if}}"
+                  class="c-featured-product-slide__image"
+                  src="{{img_url feature_image}}"
+                  >
+                {{/if}}
+              </div>
+              <div class="c-product-slide__main">
+                {{#primary_tag}}
+                <div class="c-product-slide__tag">{{name}}</div>
+                {{/primary_tag}}
+
+                <h3 class="c-product-slide__title">
+                  <a href="{{url}}" class="c-product-slide__link">{{title}}</a>
+                </h3>
+                <div class="c-product-slide__excerpt">{{#if custom_excerpt}}{{custom_excerpt}}{{else}}{{excerpt}}{{/if}}</div>
+                <div class="c-product-slide__action">
+                  <a href="{{url}}" class="c-product-slide__button">자세히보기</a>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        {{/foreach}}
+        </div>
+      </div>
+    </div>
+    <div class="swiper-pagination"></div>
+  </div>
+  <div class="c-product-slide__swiper-button c-product-slide__swiper-button--right">
+    <div class="swiper-button swiper-button-next">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-6 h-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+      </svg>
+    </div>
+  </div>
+</div>
+{{/if}}
+{{/get}}
+
+{{#contentFor "scripts"}}
+<script>
+const featuredProductSlide = new Swiper(".c-product-slide__swiper .swiper", {
+  spaceBetween: 20,
+  pagination: {
+    el: '.c-product-slide__outer .swiper-pagination',
+    clickable: true,
+  },
+  navigation: {
+    nextEl: '.c-product-slide__outer .swiper-button-next',
+    prevEl: '.c-product-slide__outer .swiper-button-prev',
+  },
+  //autoplay: { delay: 3000 },
+});
+</script>
+{{/contentFor}}

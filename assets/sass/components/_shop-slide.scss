@@ -1,0 +1,151 @@
+.c-shop-slide__outer {
+  .swiper {
+    overflow: visible;
+
+    @include mq($until: landscape) {
+      height: 410px;
+    }
+
+    @include mq($from: landscape) {
+      height: 720px;
+    }
+
+    @include mq($from: desktop) {
+      height: auto;
+    }
+  }
+
+  .swiper-slide {
+    visibility: hidden;
+    height: auto;
+
+    @include mq($until: desktop) {
+      height: calc((100% - 20px) / 2);
+    }
+
+    @include mq($from: desktop) {
+      height: auto;
+    }
+
+    > div {
+      height: 100%;
+    }
+
+    &-visible {
+      visibility: visible;
+    }
+  }
+
+  .swiper-pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 6px;
+
+    padding-top: 20px;
+    position: relative;
+    top: auto;
+    bottom: auto;
+
+    @include mq($from: desktop) {
+      display: none;
+    }
+
+    &-bullet {
+      border-radius: 100%;
+      width: 6px;
+      height: 6px;
+      background-color: #c9c9c9;
+      opacity: 1;
+      display: block;
+      cursor: pointer;
+
+      &-active {
+        background-color: #717171;
+      }
+    }
+
+    .swiper-pagination-bullet {
+      margin: 0;
+    }
+  }
+
+  .swiper-button {
+    opacity: 0.3;
+    cursor: not-allowed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    top: auto;
+    right: auto;
+    left: auto;
+    bottom: auto;
+    width: auto;
+    height: auto;
+    margin: 0;
+
+    &::after {
+      display: none;
+    }
+
+    &:not(.swiper-button-disabled) {
+      opacity: 1;
+      cursor: pointer;
+    }
+
+    svg {
+      width: 28px;
+      height: 28px;
+      color: #000;
+    }
+  }
+}
+
+.c-shop-slide {
+  &__section {
+    overflow: hidden;
+    padding: 32px 0;
+  }
+
+  &__title {
+    font-size: 26px;
+    font-family: 'Anton', sans-serif;
+  }
+
+  &__outer {
+    .c-product-card {
+      max-width: 160px;
+      margin: 0 auto;
+
+      @include mq($from: landscape) {
+        max-width: 320px;
+      }
+
+      @include mq($from: desktop) {
+        max-width: none;
+      }
+    }
+  }
+
+  &__navigation {
+    display: none;
+
+    @include mq($from: desktop) {
+      display: flex;
+      align-items: center;
+      justify-content: end;
+      column-gap: 32px;
+      padding: 16px 0;
+    }
+  }
+
+  &__category-naviagtion {
+    padding: 20px 0;
+
+    @include mq($from: desktop) {
+      padding-bottom: 0;
+      margin-bottom: -26px;
+    }
+  }
+}

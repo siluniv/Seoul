@@ -1,7 +1,7 @@
 {
   "name": "seoul",
   "description": "Membership and Subscription Theme",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "engines": {
     "ghost": ">=4.0.0"
   },
@@ -11,7 +11,13 @@
   "scripts": {
     "postinstall": "bower install"
   },
-  "dependencies": {
+  "devDependencies": {
+    "dart-sass": "^1.25.0",
+    "gulp": "^4.0.2",
+    "gulp-rtlcss": "^1.4.1",
+    "gulp-sass": "^5.1.0",
+    "gulp-zip": "^4.2.0",
+    "sass": "^1.49.7",
     "@primer/css": "^15.2.0",
     "bower": "^1.8.13",
     "clipboard": "^2.0.8",
@@ -40,14 +46,6 @@
     "sass-mq": "^5.0.1",
     "swiper": "^8.3.2"
   },
-  "devDependencies": {
-    "dart-sass": "^1.25.0",
-    "gulp": "^4.0.2",
-    "gulp-rtlcss": "^1.4.1",
-    "gulp-sass": "^5.1.0",
-    "gulp-zip": "^4.2.0",
-    "sass": "^1.49.7"
-  },
   "author": {
     "name": "Mediasphere",
     "email": "partner@mediasphere.kr",
@@ -55,6 +53,17 @@
   },
   "config": {
     "custom": {
+      "shop_navigation_format": {
+        "group": "shop",
+        "type": "select",
+        "options": [
+          "type",
+          "category"
+        ],
+        "default": "type",
+        "title": "숍 네비게이션 선택",
+        "description": "타입(type) 또는 카테고리(category) 형식의 네비게이션을 선택할 수 있습니다."
+      },
       "shop_point_background_color": {
         "group": "shop",
         "type": "color",

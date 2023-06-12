@@ -1,0 +1,201 @@
+{{#contentFor "custom_body_class"}} shop-template{{/contentFor}}
+
+{{#product}}
+<div class="s-product">
+  {{> common/product/header }}
+
+  <div class="s-product__main">
+    <div class="o-grid">
+      <div class="o-grid__col o-grid__col--full">
+        <div class="s-product__main--inner">
+          <article class="s-product__article">
+            <header class="s-product__article--header">
+              {{#if payment.type}}
+              <div class="s-product__type">{{payment.type_text}}</div>
+              {{/if}}
+              <h1 class="s-product__title">{{title}}</h1>
+            </header>
+            <div class="s-product__article--main">
+              <div class="s-product__article--info">
+              {{#if payment.have_require_message}}
+                <div class="s-product-sell__require-message bluedot-product-require-message bluedot-markdown">{{markdown payment.require_message}}</div>
+              {{/if}}
+              {{#if payment_status.is_paid}}
+                {{#unless payment.purchase.chapters}}
+                  {{#if payment.purchase.file}}
+                    {{#if payment.purchase.file.is_mp4}}
+                      {{#if (eq payment.purchase.file.vimeo_state "done")}}
+                        {{#if payment.purchase.file.vimeo_files}}
+                          {{#if payment.purchase.file.vimeo_files.hls}}
+                <div class="s-product__content--video">
+                  <div class="bluedot-product-video-wrap">
+                      <video-js id="video" class="vjs-default-skin vjs-big-play-centered" controls preload="auto" width="640" height="268">
+                          <source src="{{payment.purchase.file.vimeo_files.hls.link}}" type="application/x-mpegURL">
+                      </video-js>
+                      <script>
+                          var player = videojs('video');
+                      </script>
+                  </div>
+                </div>
+                          {{/if}}
+                        {{/if}}
+                      {{/if}}
+                    {{/if}}
+                  {{/if}}
+                {{/unless}}
+              {{/if}}
+              </div>
+              <div class="s-product__content c-content">{{content}}</div>
+            </div>
+          </article>
+          <aside class="s-product__aside">{{> common/product/sell }}</aside>
+        </div>{{!-- inner --}}
+      </div>
+    </div>
+  </div>
+
+  {{> common/product/footer }}
+</div>
+
+
+{{!-- script and styles for vod content --}}
+{{#if payment_status.is_paid}}
+  {{#if payment.is_online_class}}
+    {{#contentFor 'styles'}}
+<link rel="stylesheet" href="{{asset "public/video.css" hasMinFile="true"}}"/>
+<script type="text/javascript" src="{{asset "public/video.js" hasMinFile="true"}}"></script>
+    {{/contentFor}}
+
+    {{#contentFor 'scripts'}}
+<script type="text/javascript">
+function updateMediaView(uuid, current, duration) {
+  $.ajax({
+    url: '/members/api/media/view',
+    method: 'PUT',
+    data: JSON.stringify({
+      uuid: uuid,
+      current: current,
+      duration: duration
+    }),
+    contentType:"application/json; charset=utf-8"
+  })
+}
+
+function chnagePlayProgress(uuid, current, percent) {
+  var $playarea = $("[data-video-uuid=" + uuid+"]");
+  var $playarea_progress = $playarea.find('.progress');
+
+  $playarea.data('video-view-current', current);
+  $playarea.data('video-view-percent', percent);
+  $playarea_progress.find('.now').css('width', percent + '%');
+}
+
+window.onload = function() {
+  var $script_for = $(".bluedot-product-chapters");
+  var player_loading = false;
+  var media_last = null;
+  var media_uuid = null;
+  var player = videojs('video-for-chapter');
+  $chapter_list = $script_for.find(".bluedot-product-chapter-list");
+
+  function selectVideo($lesson, autoPlay) {
+    media_last = null;
+    autoPlay = typeof(autoPlay) === 'undefined' ? false : autoPlay;
+
+    $chapter_list.find('a.active').removeClass('active');
+    $lesson.addClass('active');
+
+    media_uuid = $lesson.data('video-uuid');
+
+    var video_view_current = $lesson.data('video-view-current');
+    var video = $lesson.data('video');
+
+    if(video) {
+      player_loading = true;
+      player.src({src: video});
+
+      if(video_view_current) {
+        player.currentTime(video_view_current);
+      }
+
+      if(autoPlay) {
+        player.ready(function() {
+            player.play();
+        });
+      }
+    }
+  }
+
+  $chapter_list.find(".lesson-link").on('click', function() {
+    var $lesson = $(this);
+    selectVideo($lesson, true);
+    return false;
+  })
+
+  if(player) {
+    if(player.el_) {
+      $(player.el_).on('contextmenu', function() {
+        return false;
+      });
+    }
+
+    player.on('playing', function() {
+      player_loading = false;
+    })
+
+    player.on('timeupdate', function() {
+      if(!player_loading && media_uuid) {
+        if(this.ended()) {
+          updateMediaView(media_uuid, this.duration(), this.duration());
+          chnagePlayProgress(media_uuid, this.duration(), 100);
+        } else {
+          var now = parseInt(this.currentTime());
+          var percent = Math.round((now / this.duration()) * 100);
+          chnagePlayProgress(media_uuid, now, percent);
+
+          if(media_last != now && now % 2 === 0) { // 2초에 한번씩
+            updateMediaView(media_uuid, now, this.duration());
+            media_last = now;
+          }
+        }
+      }
+    })
+  }
+
+  // 첫번째 동영상 자동 선택
+  var $first_lesson = $script_for.find('.chapter-index-1 .lesson-index-1 .lesson-link');
+  selectVideo($first_lesson, false);
+
+
+
+
+  $(".bluedot-product-chapter-header").on('click',function(){
+    $(this).toggleClass('close');
+    var index = $(this).data('index');
+
+    var target = $('.chapter-index-' + index);
+    if (target) {
+      target.slideToggle(100);
+    }
+  });
+}
+</script>
+    {{/contentFor}}
+  {{/if}}
+{{/if}}
+
+{{/product}}
+
+
+{{#contentFor "scripts"}}
+<script>
+function downloadURI(uri, name) {
+  var link = document.createElement("a");
+  link.setAttribute('download', name);
+  link.href = uri;
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+}
+</script>
+{{/contentFor}}

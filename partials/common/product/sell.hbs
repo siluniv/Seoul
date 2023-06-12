@@ -1,0 +1,272 @@
+<div class="s-product-sell__container">
+  <div class="s-product-sell">
+    <header class="s-product-sell__header">
+      {{#if payment.type}}
+      <div class="s-product-sell__type">{{payment.type_text}}</div>
+      {{/if}}
+      <h2 class="s-product-sell__title">{{title}}</h2>
+    </header>
+
+
+
+    <div class="s-product-sell__data">
+
+    {{#if payment.is_webinar}}
+      <div class="s-product-sell__event">
+        {{#if payment.event.type}}
+        <dl>
+          <dt>행사유형</dt>
+          <dd>{{payment.event.type_text}}</dd>
+        </dl>
+        {{/if}}
+
+        {{#if payment.event.used_event_date}}
+        <dl>
+            <dt>행사일정</dt>
+            <dd>
+                {{payment.event.event_date_text}}
+                {{#unless payment.event.event_is_past}}
+                <span class="label-dday">D - {{payment.event.event_d_day}}</span>
+                {{/unless}}
+            </dd>
+        </dl>
+        {{/if}}
+        {{#if payment.event.used_join_date}}
+        <dl>
+            <dt>신청기간</dt>
+            <dd>{{payment.event.join_date_text}}</dd>
+        </dl>
+        {{/if}}
+        {{#if payment.used_period_days}}
+        <dl>
+            <dt>{{payment.period_days_title}}</dt>
+            <dd>{{payment.period_days}}일 (오늘 구매시 {{payment.period_date_from_now}}까지 이용가능)</dd>
+        </dl>
+        {{/if}}
+
+        {{#if payment.event.place}}
+        <dl>
+            <dt>장소</dt>
+            <dd class="s-product-sell__event--place">
+              <span>{{payment.event.place}}</span>
+              {{#if payment_status.is_paid}}
+              {{#if payment.event.online_stream_url}}
+                <a class="s-product-sell__event--link" href="{{payment.event.online_stream_url}}" target="_blank">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                    <path d="M4.5 4.5a3 3 0 00-3 3v9a3 3 0 003 3h8.25a3 3 0 003-3v-9a3 3 0 00-3-3H4.5zM19.94 18.75l-2.69-2.69V7.94l2.69-2.69c.944-.945 2.56-.276 2.56 1.06v11.38c0 1.336-1.616 2.005-2.56 1.06z" />
+                  </svg>
+                  <span>참여하기</span>
+                </a>
+              {{/if}}
+              {{/if}}
+            </dd>
+        </dl>
+        {{/if}}
+      </div>
+    {{else}}
+    {{!-- 이벤트 상품이 아닌 경우 --}}
+      {{#unless payment_status.is_paid}}
+        {{#if payment.used_period_days}}
+      <div class="s-product-sell__event">
+        <dl>
+          <dt class="s-product-sell__event--download">{{payment.period_days_title}}</dt>
+          <dd>
+              {{payment.period_days}}일
+              (오늘 구매시 {{payment.period_date_from_now}}까지 이용가능)
+          </dd>
+        </dl>
+      </div>
+        {{/if}}
+      {{else}}
+        {{#if payment_period.is_period}}
+      <div class="s-product-sell__event">
+        <dl>
+          <dt class="s-product-sell__event--period">{{payment.period_days_title}}</dt>
+          <dd>
+            {{#if payment_period.period_is_today}}
+            오늘 {{payment_period.period_time_at}} 까지 이용가능
+            {{else}}
+            {{payment_period.period_at}}까지 이용가능 (구매 후 {{payment.period_days}}일)
+            {{/if}}
+          </dd>
+        </dl>
+      </div>
+        {{/if}}
+      {{/unless}}
+    {{/if}}
+
+    {{#if payment_status.is_paid}}
+      <div class="s-product-sell__paid">
+      {{#if payment.purchase.file}}
+        {{#if payment.purchase.file.is_mp4}}
+        <div class="s-product-sell__video-message bluedot-product-video-message">
+          {{#match payment.purchase.file.vimeo_state "=" "renew"}}
+          동영상을 새롭게 업로드 중입니다.
+          {{else match payment.purchase.file.vimeo_state "=" "done"}}
+            {{#if payment.purchase.file.vimeo_files}}
+              {{#unless payment.purchase.file.vimeo_files.hls}}
+          동영상을 컨버팅 중입니다.
+          <br />완료되는대로 재생하실 수 있도록 하겠습니다.
+              {{/unless}}
+            {{else}}
+          동영상을 컨버팅 중입니다.
+            {{/if}}
+          {{else}}
+          동영상을 업로드 중입니다.
+          {{/match}}
+
+          {{#unless (eq payment.purchase.file.vimeo_state "done")}}
+          <br />완료되는대로 재생하실 수 있도록 하겠습니다.
+          {{/unless}}
+        </div>
+        {{else}}
+
+        {{/if}}
+      {{/if}}
+      </div>
+
+      {{#if payment.purchase.message}}
+      <div class="s-product-sell__buyer-message bluedot-product-buyer-message bluedot-markdown">{{markdown payment.purchase.message}}</div>
+      {{/if}}
+    {{/if}}{{!-- 파일에 대한 정보 --}}
+
+    </div>{{!-- Data --}}
+
+
+    {{#unless payment_status.is_paid}}
+    {{!-- 가격 정보 --}}
+    <div class="s-product-sell__prices">
+    {{#if payment.have_price_sale}}
+      <div class="s-product-sell__price">
+        <div class="s-product-sell__price--label">무료회원 {{#if payment.have_price_original}}할인가{{else}}판매가{{/if}}</div>
+        <div class="s-product-sell__price--value">
+          {{#if @member.paid}}
+          <i>{{price payment.price currency="KRW"}}</i>
+          {{else}}
+          {{price payment.price currency="KRW"}}
+          {{/if}}
+        </div>
+      </div>
+
+      <div class="s-product-sell__price bluedot-product-price-for-subscriber">
+        <div class="s-product-sell__price--label">유료구독회원 할인가</div>
+        <div class="s-product-sell__price--value">{{price payment.price_sale currency="KRW"}}</div>
+      </div>
+
+      <div class="s-product-sell__price s-product-sell__price--final bluedot-product-final-price">
+        <div class="s-product-sell__price--label">결제금액</div>
+        <div class="s-product-sell__price--value">
+        {{#if @member.paid}}
+          {{price payment.price_sale currency="KRW"}}
+        {{else}}
+          {{price payment.price currency="KRW"}}
+        {{/if}}
+        </div>
+      </div>
+    {{else}}
+      {{#unless payment.is_stop_selling}}
+        {{#if payment.have_price_original}}
+      <div class="s-product-sell__price">
+        <div class="s-product-sell__price--label">판매가</div>
+        <div class="s-product-sell__price--value">
+          <i>{{price payment.price_original currency="KRW"}}</i>
+        </div>
+      </div>
+      <div class="s-product-sell__price">
+        <div class="s-product-sell__price--label">무료회원 할인가</div>
+        <div class="s-product-sell__price--value">
+          <span class="s-product-sell__price--percent">{{payment.price_original_sale_percent}}<span class="symbol">%</span></span>
+          {{price payment.price currency="KRW"}}
+        </div>
+      </div>
+      <div class="s-product-sell__price s-product-sell__price--final bluedot-product-final-price">
+        <div class="s-product-sell__price--label">결제금액</div>
+        <div class="s-product-sell__price--value">{{price payment.price currency="KRW"}}</div>
+      </div>
+        {{else}}
+      <div class="s-product-sell__price">
+        <div class="s-product-sell__price--label">판매가</div>
+        <div class="s-product-sell__price--value">{{price payment.price currency="KRW"}}</div>
+      </div>
+        {{/if}}
+      {{/unless}}
+    {{/if}}
+    </div>
+    {{/unless}}
+
+
+
+    <footer class="s-product-sell__footer">
+
+
+<div class="s-product-sell__payment">
+              {{#if payment_status.is_paid}}
+                {{#if payment.type}}
+                  {{#if payment.purchase.url}}
+                    {{#if payment.purchase.url_is_text}}
+                      {{!-- URL 부분에 URL 입력하지 않고 일반 텍스트로 입력함 --}}
+                <div class="bluedot-product-buyer-message bluedot-markdown">{{markdown payment.purchase.url}}</div>
+                    {{else}}
+                <a class="s-product-sell__payment--button" href="{{payment.purchase.url}}">{{payment.purchase.button_text}}</a>
+                    {{/if}}
+                  {{else}}
+
+                    {{#if payment.purchase.file}}
+                      {{#if payment.purchase.file.is_mp4}}
+                <div class="s-product-sell__payment--button disabled">구매완료</div>
+                      {{else}}
+                        {{#if payment.purchase.file.name}}
+                          {{#if payment.purchase.file.downloadable}}
+                <a class="s-product-sell__payment--button s-product-sell__download--button" {{#if payment.purchase.file.is_pdf}}href="/file/{{uuid}}"{{else}}href="#" onclick="downloadURI('/file/{{uuid}}', '{{payment.purchase.file.name}}'); return false;"{{/if}}>{{payment.purchase.file.ext}} 다운로드</a>
+                          {{else}}
+                <a class="s-product-sell__payment--button" href="/file/{{uuid}}">첨부파일 보기</a>
+                          {{/if}}
+                        {{else}}
+                <div class="s-product-sell__payment--button disabled">구매완료</div>
+                        {{/if}}
+                      {{/if}}
+                    {{else}}
+                <div class="s-product-sell__payment--button disabled">구매완료</div>
+                    {{/if}}
+
+                  {{/if}}
+                {{else}}
+
+                  {{#if payment.purchase.file}}
+                    {{#if payment.purchase.file.is_mp4}}
+                <div class="s-product-sell__payment--button disabled">구매완료</div>
+                    {{else}}
+                      {{#if payment.purchase.file.name}}
+                        {{#if payment.purchase.file.downloadable}}
+                <a class="s-product-sell__payment--button s-product-sell__download--button" {{#if payment.purchase.file.is_pdf}}href="/file/{{uuid}}"{{else}}href="#" onclick="downloadURI('/file/{{uuid}}', '{{payment.purchase.file.name}}'); return false;"{{/if}}>{{payment.purchase.file.ext}} 다운로드</a>
+                        {{else}}
+                <a class="s-product-sell__payment--button" href="/file/{{uuid}}">첨부파일 보기</a>
+                        {{/if}}
+                      {{else}}
+                <div class="s-product-sell__payment--button disabled">구매완료</div>
+                      {{/if}}
+                    {{/if}}
+                  {{else}}
+                <div class="s-product-sell__payment--button disabled">구매완료</div>
+                  {{/if}}
+
+                {{/if}}
+              {{else}}
+                {{#if payment.is_selling}}
+                <a class="s-product-sell__payment--button" href="#" data-portal="product" data-product-uuid="{{ uuid }}">
+                {{#if (eq payment.type "webinar")}}
+                  {{#if payment.price_final}}결제하기{{else}}등록하기{{/if}}
+                {{else}}
+                  결제하기
+                {{/if}}
+                </a>
+                {{else}}
+                <div class="s-product-sell__payment--button disabled">{{#if payment.is_stop_selling}}판매 종료{{else}}{{#if payment.is_soldout}}품절{{/if}}{{/if}}</div>
+                {{/if}}
+              {{/if}}
+              </div>
+
+
+    </footer>
+  </div>
+</div>

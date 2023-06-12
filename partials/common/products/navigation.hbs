@@ -1,0 +1,20 @@
+<div class="s-products-navigation__container">
+  <div class="s-products-navigation">
+    <div style="display:none !important;">{{product_categories}}</div>
+    <ul class="s-products-navigation__list">
+      <li class="s-products-navigation__item s-products-navigation__item--all">
+        <a href="/shop/" class="s-products-navigation__link{{#match which "home"}} s-products-navigation__link--current{{/match}} {{link_class for="/shop/" activeClass="s-products-navigation__link--current"}}">{{t '전체보기'}}</a>
+      </li>
+      {{#match @custom.shop_navigation_format "=" "category"}}
+      {{#foreach product_categories}}
+      <li class="s-products-navigation__item s-products-navigation__item--{{slug}}">{{#link href=(url) class="s-products-navigation__link" activeClass="s-products-navigation__link--current"}}{{label}}{{/link}}</li>
+      {{/foreach}}
+      {{else match @custom.shop_navigation_format "=" "type"}}
+      <li class="s-products-navigation__item s-products-navigation__item--online">{{#link href="/shop/online-class/" class="s-products-navigation__link" activeClass="s-products-navigation__link--current"}}온라인 강좌{{/link}}</li>
+      <li class="s-products-navigation__item s-products-navigation__item--webinar">{{#link href="/shop/webinar/" class="s-products-navigation__link" activeClass="s-products-navigation__link--current"}}이벤트{{/link}}</li>
+      <li class="s-products-navigation__item s-products-navigation__item--digital">{{#link href="/shop/digital-book/" class="s-products-navigation__link" activeClass="s-products-navigation__link--current"}}디지털 북{{/link}}</li>
+      <li class="s-products-navigation__item s-products-navigation__item--etc">{{#link href="/shop/etc/" class="s-products-navigation__link" activeClass="s-products-navigation__link--current"}}기타{{/link}}</li>
+      {{/match}}
+    </ul>
+  </div>
+</div>

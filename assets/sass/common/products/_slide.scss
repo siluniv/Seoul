@@ -1,0 +1,257 @@
+
+.s-products-slide {
+  &__container {
+    .swiper-pagination {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      column-gap: 6px;
+
+      padding-top: 20px;
+
+      @include mq($from: landscape) {
+        display: none;
+      }
+
+      &-bullet {
+        border-radius: 100%;
+        width: 6px;
+        height: 6px;
+        background-color: #b9b9b9;
+        display: block;
+        cursor: pointer;
+
+        &-active {
+          background-color: #717171;
+        }
+      }
+    }
+
+    .swiper-button {
+      display: none;
+
+      border-radius: 100%;
+      background-color: #000;
+      color: #fff;
+      opacity: 0.3;
+      cursor: not-allowed;
+
+      &:not(.swiper-button-disabled) {
+        opacity: 1;
+        cursor: pointer;
+      }
+
+      @include mq($from: landscape) {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        width: 32px;
+        height: 32px;
+      }
+
+      &::after {
+        display: none;
+      }
+
+      svg {
+        display: block;
+        width: 18px;
+        height: 24px;
+      }
+
+      &-prev svg {
+        margin-right: 2px;
+      }
+
+      &-next svg {
+        margin-left: 2px;
+      }
+    }
+
+    .swiper-slide {
+      height: auto;
+    }
+  }
+
+  &__swiper-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @include mq($from: landscape) {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+    }
+
+    &--left {
+      left: 0;
+    }
+
+    &--right {
+      right: 0;
+    }
+  }
+
+  &__container {
+    padding: 20px 0;
+    position: relative;
+
+    @include mq($from: tablet) {
+      padding: 40px 0;
+    }
+
+    @include mq($from: landscape) {
+      padding: 36px 0;
+      // display: flex;
+      // align-items: center;
+      // justify-content: space-between;
+    }
+  }
+
+  &__main {
+    @include mq($from: landscape) {
+      padding: 0 calc(32px + 60px);
+    }
+
+    @include mq($from: desktop) {
+      padding: 0 calc(32px + 60px);
+    }
+  }
+}
+
+/**
+ * Slide Item
+ */
+.s-products-slide-item {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  @include mq($from: landscape) {
+    flex-direction: row-reverse;
+    column-gap: 60px;
+  }
+
+  @include mq($from: desktop) {
+    column-gap: 80px;
+  }
+
+  &__link {
+    &--cover {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+    }
+  }
+
+  &__media {
+    position: relative;
+    background-color: #d9d9d9;
+    aspect-ratio: 16 / 10;
+    width: calc(100% - 2px);
+    height: auto;
+    overflow: hidden;
+    border: 1px solid #000;
+
+    @include mq($from: landscape) {
+      max-width: 320px;
+      width: 100%;
+      flex-shrink: 0;
+    }
+
+    @include mq($from: desktop) {
+      max-width: 400px;
+    }
+  }
+
+  &__image {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__main {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    padding-top: 10px;
+
+    @include mq($from: landscape) {
+      padding-top: 0;
+      justify-content: center;
+    }
+  }
+
+  &__tag {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--accent-color);
+  }
+
+  &__title {
+    flex-grow: 1;
+    font-size: 25px;
+    font-weight: 700;
+    line-height: 32px;
+    letter-spacing: -0.02em;
+
+    margin-bottom: 10px;
+
+    @include ellipsis(2);
+
+    @include mq($from: landscape) {
+      flex-grow: 0;
+    }
+  }
+
+  &__excerpt {
+    font-size: 13px;
+    line-height: 20px;
+    letter-spacing: -0.02em;
+
+    @include ellipsis(3);
+
+
+  }
+
+  &__action {
+    padding-top: 20px;
+  }
+
+  &__button {
+    cursor: pointer;
+    border-radius: 100rem;
+    font-size: 13px;
+    font-weight: 700;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 36px;
+    min-width: 130px;
+    width: fit-content;
+
+    background-color: #000;
+    color: #fff;
+
+    @include attention() {
+      background-color: #717171;
+    }
+  }
+}
+
+[data-user-color-scheme="dark"] {
+  .s-products-slide-item {
+
+    &__title,
+    &__excerpt {
+      color: #fff;
+    }
+
+  }
+}

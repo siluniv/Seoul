@@ -37,5 +37,19 @@
 @import 'shop';
 @import 'shop-featured';
 @import 'shop-category';
-@import 'product-card';
+
 @import 'product-featured';
+
+// For Product style
+@import 'product';
+
+// For Product Card style
+@import 'product-grid';
+@import 'product-card';
+
+// For Product Slide style
+@import 'product-slide';
+@import 'product-navigation';
+@import 'product-pagination';
+
+@import 'shop-slide';

@@ -1,0 +1,53 @@
+{{#if @member.paid}}
+  {{#if payment.have_price_sale}}
+  {{!-- 유료회원 가격 표시 --}}
+<div class="c-product-card__price">
+  <div class="c-product-card__price--label">무료회원할인가</div>
+  <div class="c-product-card__price--number">
+    {{#if payment.have_price_original}}
+    {{price payment.price_original currencyFormat="none" currency="KRW"}}{{#if payment.price_original}}원{{/if}}
+    {{else}}
+    {{price payment.price currencyFormat="none" currency="KRW"}}{{#if payment.price}}원{{/if}}
+    {{/if}}
+  </div>
+</div>
+<div class="c-product-card__price">
+  <div class="c-product-card__price--label">유료회원할인가</div>
+  <div class="c-product-card__price--number">
+    {{price payment.price_sale currencyFormat="none" currency="KRW" }}{{#if payment.price_sale}}원{{/if}}
+  </div>
+</div>
+  {{else}}
+    {{#if payment.have_price_original}}
+<div class="c-product-card__price">
+  <div class="c-product-card__price--label">회원할인가</div>
+  <div class="c-product-card__price--number">
+    {{price payment.price currencyFormat="none" currency="KRW"}}{{#if payment.price_sale}}원{{/if}}
+  </div>
+</div>
+    {{else}}
+<div class="c-product-card__price">
+  <div class="c-product-card__price--label">가격</div>
+  <div class="c-product-card__price--number">
+    {{price payment.price currencyFormat="none" currency="KRW"}}{{#if payment.price_sale}}원{{/if}}
+  </div>
+</div>
+    {{/if}}
+  {{/if}}
+{{else}}
+{{!-- 비회원/무료회원 가격 표시 --}}
+<div class="c-product-card__price">
+  <div class="c-product-card__price--label">일반회원할인가</div>
+  <div class="c-product-card__price--number">
+    {{price payment.price currencyFormat="none" currency="KRW"}}{{#if payment.price}}원{{/if}}
+  </div>
+</div>
+  {{#if payment.have_price_sale}}
+<div class="c-product-card__price">
+  <div class="c-product-card__price--label">유료회원할인가</div>
+  <div class="c-product-card__price--number">
+    {{price payment.price_sale currencyFormat="none" currency="KRW"}}{{#if payment.price_sale}}원{{/if}}
+  </div>
+</div>
+  {{/if}}
+{{/if}}

@@ -1,0 +1,11 @@
+{{#if products}}
+<div class="s-products-list__container">
+  <div class="s-products-list js-content-feed">
+  {{#foreach products}}
+    {{> common/product/card }}
+  {{/foreach}}
+  </div>
+</div>
+{{else}}
+<div class="s-products-list__empty">아직 상품이 없습니다.</div>
+{{/if}}

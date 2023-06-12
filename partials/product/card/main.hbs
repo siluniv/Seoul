@@ -1,0 +1,25 @@
+<div class="c-product-card__main">
+  {{#primary_tag}}
+  <div class="c-product-card__tag">
+    <div class="c-product-card__chip">{{name}}</div>
+  </div>
+  {{/primary_tag}}
+
+  {{#if payment.is_webinar}}
+  {{#if payment.event.used_event_date}}
+  {{#unless payment.event.event_is_past}}
+  <div class="c-product-card__date">
+    <div class="c-product-card__date--label">D - {{payment.event.event_d_day}}</div>
+  </div>
+  {{/unless}}
+  {{/if}}
+  {{/if}}
+
+  <h3 class="c-product-card__title">
+    <a href="{{url}}" class="c-product-card__link">{{title}}</a>
+  </h3>
+
+  <div class="c-product-card__prices">
+    {{> product/card/prices}}
+  </div>
+</div>

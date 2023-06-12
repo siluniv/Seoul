@@ -1,0 +1,26 @@
+<footer class="s-product__footer">
+  <div class="o-grid">
+    <div class="o-grid__col o-grid__col--full">
+      <div class="s-product__go-shop">
+        <a href="/shop/" class="s-product__go-shop--button">전체 상품 보기</a>
+      </div>
+    </div>
+  </div>
+
+  {{#get "products" filter=(concat "primary_tag:" primary_tag.slug) include="tags" limit="4" order="published_at desc"}}
+  {{#if products}}
+  <section class="s-product-related">
+    <div class="o-grid">
+      <div class="o-grid__col o-grid__col--full">
+        <h1 class="s-product-related__title">당신이 관심 가질 상품들</h1>
+        <div class="s-product-related__list">
+        {{#foreach products}}
+          {{> common/product/card }}
+        {{/foreach}}
+        </div>
+      </div>
+    </div>
+  </section>
+  {{/if}}
+  {{/get}}
+</footer>

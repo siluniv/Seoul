@@ -1,0 +1,43 @@
+<header class="s-product__header c-vod">
+  <div class="o-grid">
+    <div class="o-grid__col o-grid__col--full">
+    {{#if payment.purchase.chapters}}
+
+                <div class="bluedot-product-chapters">
+                    <div class="bluedot-product-chapter-main">
+                        <div class="bluedot-product-chapter-main-content">
+                            <video-js id="video-for-chapter" class="vjs-default-skin vjs-big-play-centered vjs-fluid" controls preload="auto"{{#if feature_image}} poster="{{img_url feature_image absolute="true"}}"{{/if}}></video-js>
+                        </div>
+                    </div>
+                    <div class="bluedot-product-chapter-sidebar">
+                        <div class="bluedot-product-chapter-sidebar-content">
+                            {{#foreach payment.purchase.chapters as |chapter|}}
+                            <div class="bluedot-product-chapter-header">
+                                <h3>{{chapter.title}}</h3>
+                                <span>{{chapter.lessons.length}}개 수업</span>
+                            </div>
+
+                            <div class="bluedot-product-chapter-list chapter-index-{{chapter.index}}">
+                                <ul>
+                                {{#foreach lessons as |lesson|}}
+                                    <li class="lesson-index-{{lesson.index}} no-have-cover">
+                                        <a href="#" class="lesson-link" data-video-uuid="{{lesson.media_uuid}}" data-video="{{lesson.url}}" data-video-view-current="{{lesson.media_info.view_current}}" data-video-view-percent="{{lesson.media_info.view_percent}}">
+                                            <span class="no">{{lesson.index}}</span>
+                                            <span class="title"><span>{{lesson.title}}</span></span>
+
+                                            {{#if lesson.media_info}}
+                                            <span class="progress"><span class="now" style="width:{{lesson.media_info.view_percent}}%"></span></span>
+                                            {{/if}}
+                                        </a>
+                                    </li>
+                                {{/foreach}}
+                                </ul>
+                            </div>
+                            {{/foreach}}
+                        </div>
+                    </div>
+                </div>
+    {{/if}}
+    </div>
+  </div>
+</header>

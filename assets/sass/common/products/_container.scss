@@ -1,0 +1,21 @@
+.s-products {
+  &-hero {
+    background-color: #efefef;
+  }
+
+  &-main {
+    background-color: #fff;
+  }
+}
+
+[data-user-color-scheme="dark"] {
+  .s-products {
+    &-hero {
+      background-color: #4a4a4a;
+    }
+
+    &-main {
+      background-color: #333;
+    }
+  }
+}

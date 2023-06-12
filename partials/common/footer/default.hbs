@@ -1,0 +1,92 @@
+{{#if @site.use_footer}}
+<div class="s-common-default-footer__outer">
+  <div class="o-grid">
+    <div class="o-grid__col o-grid__col--full">
+
+      <div class="s-common-default-footer">
+        <div class="s-common-default-footer__org">
+          <div class="s-common-default-footer__identity">
+          {{#if @site.logo }}
+            <div class="s-common-default-footer__logo">
+              <img class="s-common-default-footer__logo--image" src="{{ @site.logo }}" alt="{{ @site.title }}의 로고" />
+            </div>
+          {{else}}
+            <h1 class="s-common-default-footer__identity--name">{{ @site.title }}</h1>
+          {{/if}}
+          </div>
+          <ul class="s-common-default-footer__site-info">
+            {{#if @site.footer_company}}<li class="s-common-default-footer__site-info--item">{{@site.footer_company}}</li>{{/if}}
+            {{#if @site.footer_company_ceo}}<li class="s-common-default-footer__site-info--item">대표 : {{@site.footer_company_ceo}}</li>{{/if}}
+            {{#if @site.footer_company_number}}<li class="s-common-default-footer__site-info--item">사업자등록번호 : {{@site.footer_company_number}}</li>{{/if}}
+            {{#if @site.footer_company_address}}<li class="s-common-default-footer__site-info--item">{{@site.footer_company_address}}</li>{{/if}}
+            {{#if @site.footer_company_phone}}<li class="s-common-default-footer__site-info--item">대표전화 : {{@site.footer_company_phone}}</li>{{/if}}
+            {{#if @site.footer_company_privacy_officer}}<li class="s-common-default-footer__site-info--item">개인정보보호 책임자 : {{@site.footer_company_privacy_officer}}</li>{{/if}}
+            {{#if @site.footer_text}}<li class="s-common-default-footer__site-info--item">{{@site.footer_text}}</li>{{/if}}
+          </ul>
+          <div class="s-common-default-footer__sns">
+            {{#if @site.youtube}}
+            <div class="s-common-default-footer__sns--item">
+              <a href="{{youtube_url}}" aria-label="Youtube" target="_blank" rel="noopener">
+                <svg width="23" height="16" viewBox="0 0 23 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M22.5261 2.50369C22.3947 2.0213 22.1384 1.58152 21.7828 1.22811C21.4271 0.874702 20.9846 0.619982 20.4991 0.4893C18.7004 1.02257e-07 11.4998 0 11.4998 0C11.4998 0 4.30054 1.56794e-06 2.50083 0.470716C1.5346 0.73413 0.738161 1.52473 0.473761 2.50369C-6.86126e-08 4.29183 0 8 0 8C0 8 -6.86126e-08 11.7271 0.473761 13.4963C0.605367 13.9786 0.861711 14.4183 1.21732 14.7717C1.57293 15.1251 2.01542 15.3799 2.50083 15.5107C4.31961 16 11.5001 16 11.5001 16C11.5001 16 18.6994 16 20.4991 15.5293C20.9846 15.3986 21.4271 15.144 21.7828 14.7906C22.1385 14.4373 22.3949 13.9976 22.5265 13.5153C22.9999 11.7282 22.9999 8.01894 22.9999 8.01894C22.9999 8.01894 23.019 4.29183 22.5261 2.50369ZM9.20759 11.4258V4.57419L15.1945 8L9.20759 11.4258Z" fill="#0A142F"/></svg>
+              </a>
+            </div>
+            {{/if}}
+
+            {{#if @site.facebook}}
+            <div class="s-common-default-footer__sns--item">
+              <a href="{{ facebook_url }}" aria-label="Facebook" target="_blank" rel="noopener">
+                <svg width="9" height="20" viewBox="0 0 9 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.23616 9.95276H5.6512C5.6512 14.0602 5.6512 19.116 5.6512 19.116H1.8208C1.8208 19.116 1.8208 14.1092 1.8208 9.95276H0V6.71419H1.8208V4.61943C1.8208 3.11917 2.5376 0.774902 5.6864 0.774902L8.5248 0.785723V3.92945C8.5248 3.92945 6.8 3.92945 6.46464 3.92945C6.12928 3.92945 5.65248 4.09622 5.65248 4.81166V6.71483H8.57088L8.23616 9.95276Z" fill="#0A142F"/></svg>
+              </a>
+            </div>
+            {{/if}}
+
+            {{#if @site.twitter}}
+            <div class="s-common-default-footer__sns--item">
+              <a href="{{ twitter_url }}" aria-label="Twitter" target="_blank" rel="noopener">
+                <svg width="20" height="16" viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M17.7834 4.05368L17.7953 4.56028C17.7953 9.7334 13.8383 15.6933 6.60133 15.6933C4.38012 15.6933 2.31267 15.0457 0.570877 13.9351C0.878524 13.9708 1.19208 13.9907 1.50972 13.9907C3.35343 13.9907 5.0493 13.3649 6.3956 12.316C4.67377 12.2842 3.22155 11.1518 2.7202 9.59832C2.96187 9.644 3.20559 9.6659 3.46126 9.6659C3.82081 9.6659 4.16835 9.62022 4.49794 9.53082C2.69819 9.16923 1.3419 7.58991 1.3419 5.69469V5.64503C1.87322 5.93904 2.47846 6.11385 3.12365 6.13574C2.06896 5.43447 1.37383 4.23653 1.37383 2.87966C1.37383 2.16251 1.56761 1.49104 1.90515 0.912947C3.84473 3.28098 6.7451 4.83847 10.015 5.00139C9.94707 4.71529 9.91316 4.41533 9.91316 4.10942C9.91316 1.94999 11.6749 0.197754 13.8482 0.197754C14.9788 0.197754 16.0016 0.672524 16.7206 1.4334C17.6155 1.25656 18.4585 0.930788 19.2195 0.483792C18.9259 1.39765 18.3027 2.16447 17.4897 2.64917C18.2827 2.55579 19.0437 2.3432 19.7489 2.03331C19.2215 2.81601 18.5524 3.50539 17.7834 4.05368Z" fill="#0A142F"/></svg>
+              </a>
+            </div>
+            {{/if}}
+
+            {{#if @site.instagram}}
+            <div class="s-common-default-footer__sns--item">
+              <a href="{{ instagram_url }}" aria-label="Instagram" target="_blank" rel="noopener">
+                <svg width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M6.62552 0.0596729C7.69219 0.0116031 8.03302 0 10.7489 0C13.4647 0 13.8055 0.0116031 14.8722 0.0596729C16.4972 0.133435 17.9247 0.529597 19.0705 1.66918C20.2164 2.80877 20.6147 4.22849 20.6889 5.84463C20.7372 6.90549 20.7489 7.24446 20.7489 9.94549C20.7489 12.6465 20.7372 12.9855 20.6889 14.0463C20.6147 15.6625 20.2164 17.0822 19.0705 18.2218C17.9247 19.3614 16.4972 19.7575 14.8722 19.8313C13.8055 19.8794 13.4647 19.891 10.7489 19.891C8.03302 19.891 7.69219 19.8794 6.62552 19.8313C5.00052 19.7575 3.57302 19.3614 2.42719 18.2218C1.28136 17.0822 0.883022 15.6625 0.808856 14.0463C0.760522 12.9855 0.748856 12.6465 0.748856 9.94549C0.748856 7.24446 0.760522 6.90549 0.808856 5.84463C0.883022 4.22849 1.28136 2.80877 2.42719 1.66918C3.57302 0.529597 5.00052 0.133435 6.62552 0.0596729ZM14.7888 1.85001C13.7346 1.80194 13.418 1.79199 10.748 1.79199C8.07797 1.79199 7.7613 1.80194 6.70714 1.85001C5.5688 1.90139 4.51297 2.12848 3.70047 2.93655C2.88797 3.74462 2.65964 4.7947 2.60797 5.92683C2.55964 6.97525 2.54964 7.29019 2.54964 9.94564C2.54964 12.6011 2.55964 12.916 2.60797 13.9644C2.65964 15.0966 2.88797 16.1467 3.70047 16.9547C4.51297 17.7628 5.5688 17.9899 6.70714 18.0413C7.7613 18.0893 8.07797 18.0993 10.748 18.0993C13.418 18.0993 13.7346 18.0893 14.7888 18.0413C15.9271 17.9899 16.983 17.7628 17.7955 16.9547C18.608 16.1467 18.8363 15.0966 18.888 13.9644C18.9363 12.916 18.9463 12.6011 18.9463 9.94564C18.9463 7.29019 18.9363 6.97525 18.888 5.92683C18.8363 4.7947 18.608 3.74462 17.7955 2.93655C16.983 2.12848 15.9271 1.90139 14.7888 1.85001ZM5.61214 9.9449C5.61214 7.12453 7.9113 4.83789 10.7471 4.83789C13.583 4.83789 15.8821 7.12453 15.8821 9.9449C15.8821 12.7653 13.583 15.0519 10.7471 15.0519C7.9113 15.0519 5.61214 12.7653 5.61214 9.9449ZM7.41292 9.94504C7.41292 11.7758 8.90542 13.2602 10.7462 13.2602C12.5871 13.2602 14.0796 11.7758 14.0796 9.94504C14.0796 8.11425 12.5871 6.62988 10.7462 6.62988C8.90542 6.62988 7.41292 8.11425 7.41292 9.94504ZM17.2856 4.63682C17.2856 5.29595 16.7483 5.83028 16.0856 5.83028C15.4228 5.83028 14.8856 5.29595 14.8856 4.63682C14.8856 3.97769 15.4228 3.44336 16.0856 3.44336C16.7483 3.44336 17.2856 3.97769 17.2856 4.63682Z" fill="#0A142F"/></svg>
+              </a>
+            </div>
+            {{/if}}
+
+            {{#if @site.kakaotalk}}
+            <div class="s-common-default-footer__sns--item">
+              <a href="{{ kakaotalk_url }}" aria-label="Kakaotalk" target="_blank" rel="noopener">
+                <svg width="20" height="17" viewBox="0 0 20 17" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M19.0079 4.10443C18.1203 2.77843 16.8677 1.82335 15.3713 1.14296C12.8385 -0.00801111 10.1769 -0.261854 7.43038 0.256258C5.24514 0.670052 3.31367 1.55444 1.80475 3.11689C0.349586 4.6237 -0.299239 6.38668 0.130809 8.41161C0.485849 10.0819 1.51347 11.3696 2.93863 12.3931C3.47869 12.7814 4.07501 13.1001 4.66632 13.4629C4.64882 13.5255 4.62507 13.6182 4.59507 13.7086C4.34504 14.4551 4.095 15.1992 3.85623 15.9492C3.77663 16.208 3.71937 16.4724 3.68496 16.7396C3.65496 16.9599 3.79372 17.0514 4.01375 16.9715C4.24787 16.8925 4.47211 16.7903 4.68257 16.6666C5.79644 15.9712 6.89783 15.2595 8.0092 14.5606C8.12195 14.4817 8.25928 14.439 8.4005 14.4389C9.65244 14.5898 10.9219 14.5616 12.1647 14.3554C14.5149 13.9671 16.5839 13.0711 18.2129 11.409C20.2668 9.31106 20.5756 6.45854 19.0079 4.10443Z" fill="#0A142F"/></svg>
+              </a>
+            </div>
+            {{/if}}
+          </div>
+        </div>
+        <div class="s-common-default-footer__navigations">
+        {{#if @site.use_footer_first_navigation}}
+          {{#if @site.footer_first_navigation}}
+          <div class="s-common-default-footer__nav--outer">
+            <div class="s-common-default-footer__nav--title">{{#if @site.footer_first_navigation_title}}{{@site.footer_first_navigation_title}}{{else}}Navigation 1{{/if}}</div>
+            <ul class="s-common-default-footer__nav">{{navigation type="footerFirst"}}</ul>
+          </div>
+          {{/if}}
+        {{/if}}
+
+        {{#if @site.use_footer_second_navigation}}
+          {{#if @site.use_footer_second_navigation}}
+          <div class="s-common-default-footer__nav--outer">
+            <div class="s-common-default-footer__nav--title">{{#if @site.footer_second_navigation_title}}{{@site.footer_second_navigation_title}}{{else}}Navigation 2{{/if}}</div>
+            <ul class="s-common-default-footer__nav">{{navigation type="footerSecond"}}</ul>
+          </div>
+          {{/if}}
+        {{/if}}
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+{{/if}}

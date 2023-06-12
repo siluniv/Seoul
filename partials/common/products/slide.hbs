@@ -1,0 +1,54 @@
+{{#get "products" filter="featured:true" include="tags" limit=@config.posts_per_page order="published_at desc"}}
+{{#if products}}
+<div class="s-products-slide__container">
+
+  <div class="s-products-slide__swiper-button s-products-slide__swiper-button--left">
+    <div class="swiper-button swiper-button-prev">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-6 h-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+      </svg>
+    </div>
+  </div>
+
+  <div class="s-products-slide__main">
+    <div class="s-products-slide__swiper">
+      <div class="swiper">
+        <div class="swiper-wrapper">
+          {{#foreach products}}
+          <div class="swiper-slide">
+            {{> common/products/slide-item }}
+          </div>
+          {{/foreach}}
+        </div>
+      </div>
+    </div>
+    <div class="s-products-slide__pagination swiper-pagination"></div>
+  </div>
+
+  <div class="s-products-slide__swiper-button s-products-slide__swiper-button--right">
+    <div class="swiper-button swiper-button-next">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-6 h-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+      </svg>
+    </div>
+  </div>
+
+</div>
+{{/if}}
+{{/get}}
+
+{{#contentFor "scripts"}}
+<script>
+const featuredProductSlide = new Swiper(".s-products-slide__swiper .swiper", {
+  spaceBetween: 20,
+  pagination: {
+    el: '.s-products-slide__container .swiper-pagination',
+    clickable: true,
+  },
+  navigation: {
+    nextEl: '.s-products-slide__container .swiper-button-next',
+    prevEl: '.s-products-slide__container .swiper-button-prev',
+  },
+});
+</script>
+{{/contentFor}}

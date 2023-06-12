@@ -1,0 +1,24 @@
+{{!-- 카테고리 방식 --}}
+
+<div class="c-product-navigation">
+  <div style="display:none;">{{product_categories}}</div>
+
+  <ul class="c-nav o-plain-list">
+    <li class="c-nav__item c-nav__item--all">
+      <a href="/shop/" class="c-nav__link{{#match which "home"}} c-nav__link--current{{/match}} {{link_class for="/shop/" activeClass="c-nav__link--current"}}">{{t '전체보기'}}</a>
+
+    </li>
+
+    {{#match @custom.shop_navigation_format "=" "category"}}
+    {{#foreach product_categories}}
+    <li class="c-nav__item c-nav__item--{{slug}}">{{#link href=(url) class="c-nav__link" activeClass="c-nav__link--current"}}{{label}}{{/link}}</li>
+    {{/foreach}}
+    {{else match @custom.shop_navigation_format "=" "type"}}
+    <li class="c-nav__item c-nav__item--online">{{#link href="/shop/online-class/" class="c-nav__link" activeClass="c-nav__link--current"}}온라인 강좌{{/link}}</li>
+    <li class="c-nav__item c-nav__item--webinar">{{#link href="/shop/webinar/" class="c-nav__link" activeClass="c-nav__link--current"}}이벤트{{/link}}</li>
+    <li class="c-nav__item c-nav__item--digital">{{#link href="/shop/digital-book/" class="c-nav__link" activeClass="c-nav__link--current"}}디지털 북{{/link}}</li>
+    <li class="c-nav__item c-nav__item--etc">{{#link href="/shop/etc/" class="c-nav__link" activeClass="c-nav__link--current"}}기타{{/link}}</li>
+    {{/match}}
+
+  </ul>
+</div>

@@ -1,0 +1,7 @@
+{{#if static}}
+  {{#get "products" limit="36" include="tags,authors" filter=filter order="published_at desc"}}
+    {{> common/products/list-inner }}
+  {{/get}}
+{{else}}
+  {{> common/products/list-inner }}
+{{/if}}

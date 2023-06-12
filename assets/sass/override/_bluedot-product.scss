@@ -1,0 +1,194 @@
+.bluedot-product {
+
+}
+
+.c-vod {
+
+  .bluedot-product-chapter-main-content {
+    aspect-ratio: 16 / 9;
+    width: 100%;
+  }
+
+  .bluedot-product-chapters .bluedot-product-chapter-sidebar {
+    background-color: #fff;
+  }
+
+  .bluedot-product-chapters .bluedot-product-chapter-list ul li a.active, .bluedot-product-chapters .bluedot-product-chapter-list ul li a:hover {
+    background-color: #fff;
+  }
+
+  .bluedot-product-chapters .bluedot-product-chapter-header {
+    border-bottom: 1px solid #ddd;
+    color: #000;
+  }
+
+  .bluedot-product-chapters .bluedot-product-chapter-list ul li {
+    border: 0px;
+  }
+
+  .bluedot-product-chapters .bluedot-product-chapter-list ul li .title {
+    color: #000;
+  }
+
+  .bluedot-product-chapters .bluedot-product-chapter-list + .bluedot-product-chapter-header {
+    border-top: 0px;
+  }
+
+  .bluedot-product-chapters .bluedot-product-chapter-main-content {
+    height: auto;
+  }
+
+
+  .bluedot-product-chapters .bluedot-product-chapter-main-content .video-js {
+    background-color: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid rgba(0,0,0,0.1);
+
+    video {
+      border-radius: 12px;
+      overflow: hidden;
+
+      top: 0px;
+      left: 0px;
+      right: 0px;
+      bottom: 0px;
+
+      border-radius: 12px;
+      overflow: hidden;
+    }
+  }
+
+  .bluedot-product-chapters .bluedot-product-chapter-main-content .vjs-poster {
+    background-size: cover;
+  }
+
+  @include mq($until: desktop) {
+    .bluedot-product-wrap .bluedot-product-header {
+      flex-direction: column;
+      gap: 64px;
+    }
+
+    &.c-vod-paid .bluedot-product-wrap .bluedot-product-header .bluedot-product-info {
+      display: none;
+    }
+
+    .bluedot-product-chapters {
+      display: block;
+      height: auto;
+      margin-top: 0;
+    }
+
+    .bluedot-product-chapters .bluedot-product-chapter-main,
+    .bluedot-product-chapters .bluedot-product-chapter-sidebar {
+      width: 100%;
+      height: auto;
+    }
+
+    .bluedot-product-chapters .bluedot-product-chapter-main {
+      margin-bottom: 42px;
+    }
+
+
+
+    .bluedot-product-chapters .bluedot-product-chapter-main-content .video-js {
+      border-radius: 0;
+      border: 0px;
+    }
+
+    .bluedot-product-chapters .bluedot-product-chapter-main-content .video-js video {
+      border-radius: 0;
+    }
+
+  }
+
+  @include mq($from: tablet) {
+    .bluedot-product-chapters .bluedot-product-chapter-main-content {
+      width: calc(100vw - 16px);
+      margin-left: -16px;
+
+    }
+  }
+
+  @include mq($from: desktop) {
+    .bluedot-product-chapters {
+      height: auto;
+      gap: 30px;
+      justify-content: space-between;
+    }
+
+    .bluedot-product-chapters .bluedot-product-chapter-main {
+      max-width: 960px;
+      flex-basis: 960px;
+      width: 100%;
+      height: auto;
+    }
+
+    .bluedot-product-chapters .bluedot-product-chapter-sidebar {
+      background-color: #fff;
+      height: auto;
+      width: 100%;
+      max-width: 430px;
+    }
+
+    .bluedot-product-chapters .bluedot-product-chapter-main-content {
+      width: auto;
+      margin-left: 0;
+
+    }
+
+    .bluedot-product-chapters .bluedot-product-chapter-list ul li a.active, .bluedot-product-chapters .bluedot-product-chapter-list ul li a:hover {
+      background-color: #fff;
+    }
+
+    .bluedot-product-chapters .bluedot-product-chapter-list ul li .title {
+      font-size: 12px;
+      font-weight: 500;
+      color: #000;
+    }
+
+
+
+    .bluedot-product-wrap {
+      max-width: 1106px;
+    }
+
+    // .bluedot-product-wrap .bluedot-product-header {
+    //   gap: 30px;
+    //   justify-content: space-between;
+    // }
+
+    // .bluedot-product-wrap .bluedot-product-header.not-have-product-cover {
+    //   justify-content: space-between;
+    // }
+
+    .bluedot-product-wrap .bluedot-product-detail .bluedot-product-content-wrap {
+      max-width: 1106px;
+    }
+
+    .bluedot-product-wrap .bluedot-product-header .bluedot-product-cover {
+      aspect-ratio: 4 / 3;
+      width: 100%;
+    }
+
+    .bluedot-product-wrap .bluedot-product-header .bluedot-product-cover img {
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+    }
+
+    // .bluedot-product-wrap .bluedot-product-header .bluedot-product-info {
+    //   max-width: 430px;
+    //   width: 100%;
+    // }
+  }
+}

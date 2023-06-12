@@ -1,0 +1,82 @@
+{{#match @custom.shop_display_status "on"}}
+{{#get "products" include="tags" limit=@custom.shop_posts_per_page order="published_at desc"}}
+{{#if products}}
+<div class="c-shop-slide__section">
+  <div class="o-grid">
+    <div class="o-grid__col o-grid__col--full">
+
+      <div class="c-shop-slide__header">
+        <div class="c-shop-slide__title">Shop</div>
+        <div class="c-shop-slide__category-naviagtion">
+          {{> product/navigation which="home"}}
+        </div>
+      </div>
+      <div class="c-shop-slide__outer">
+        <div class="c-shop-slide__navigation">
+          <div class="swiper-button swiper-button-prev">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+            </svg>
+          </div>
+          <div class="swiper-button swiper-button-next">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+            </svg>
+          </div>
+        </div>
+        <div class="c-shop-slide__inner">
+          <div class="c-shop-slide__swiper">
+            <div class="swiper">
+              <div class="swiper-wrapper">
+                {{#foreach products}}
+                <div class="swiper-slide">
+                  {{> product/card}}
+                </div>
+                {{/foreach}}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="c-shop-slide__pagination">
+          <div class="swiper-pagination"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{{/if}}
+{{/get}}
+{{/match}}
+
+{{#contentFor "scripts"}}
+<script>
+const shopSlideSwiper = document.querySelector('.c-shop-slide__swiper');
+if (shopSlideSwiper) {
+  const shopSlide = new Swiper(".c-shop-slide__swiper .swiper", {
+    spaceBetween: 20,
+    slidesPerView: 2,
+    grid: {
+      rows: 2,
+      fill: 'column',
+    },
+    breakpoints: {
+      1024: {
+        slidesPerView: 4,
+        grid: {
+          rows: 1,
+        },
+      },
+    },
+    pagination: {
+      el: '.c-shop-slide__outer .swiper-pagination',
+      clickable: true,
+    },
+    navigation: {
+      nextEl: '.c-shop-slide__outer .swiper-button-next',
+      prevEl: '.c-shop-slide__outer .swiper-button-prev',
+    },
+    watchSlidesProgress: true,
+  });
+}
+</script>
+{{/contentFor}}

@@ -1,0 +1,9 @@
+{{#if products}}
+<div class="c-product-grid js-content-feed">
+{{#foreach products}}
+  {{> product/card}}
+{{/foreach}}
+</div>
+{{else}}
+<div>없음</div>
+{{/if}}

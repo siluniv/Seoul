@@ -1,0 +1,24 @@
+<div class="s-products-slide-item">
+  <div class="s-products-slide-item__media">
+    <a href="{{url}}" class="s-products-slide-item__link--cover"></a>
+    {{#if feature_image}}
+    <img
+      alt="{{#if feature_image_alt}}{{ feature_image_alt }}{{ else }}{{ title }}{{/if}}"
+      class="s-products-slide-item__image"
+      src="{{img_url feature_image}}"
+      >
+    {{/if}}
+  </div>
+  <div class="s-products-slide-item__main">
+    {{#primary_tag}}
+    <div class="s-products-slide-item__tag">{{name}}</div>
+    {{/primary_tag}}
+    <h2 class="s-products-slide-item__title">
+      <a href="{{url}}" class="s-products-slide-item__link">{{title}}</a>
+    </h2>
+    <div class="s-products-slide-item__excerpt">{{#if custom_excerpt}}{{custom_excerpt}}{{else}}{{excerpt}}{{/if}}</div>
+    <div class="s-products-slide-item__action">
+      <a href="{{url}}" class="s-products-slide-item__button">자세히보기</a>
+    </div>
+  </div>
+</div>

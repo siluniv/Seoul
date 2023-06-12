@@ -1,148 +1,204 @@
+/**
+ * ====================
+ * Product Card
+ * ====================
+ */
+
+ /* Container */
 .c-product-card {
-  position: relative;
   display: flex;
   flex-direction: column;
-  height: 100%;
+  background-color: #fff;
+  filter: drop-shadow(0px 4px 20px rgba(0, 0, 0, 0.1));
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+}
 
-  &-wrap {
-    width: 100%;
-    height: 100%;
-
-    @include desktop {
-      border-radius: 4px;
-      overflow: hidden;
+/* Util */
+.c-product-card {
+  &__link {
+    &--cover {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
     }
   }
+}
 
+/* Media Part */
+.c-product-card {
   &__media {
     position: relative;
-    overflow: hidden;
-    background-color: var(--bg-gray);
-    margin-bottom: 8px;
-
-    @include desktop {
-      margin-bottom: 0px;
-    }
-  }
-
-  &__image-wrap {
-    display: flex;
+    background-color: #d9d9d9;
     aspect-ratio: 16 / 10;
-    transition: transform $global-transition ease;
+    width: 100%;
+    height: auto;
+    overflow: hidden;
   }
 
   &__image {
+    object-fit: cover;
     width: 100%;
     height: 100%;
-    object-fit: cover;
   }
+}
 
-  &__content {
+/* Main Part */
+.c-product-card {
+  &__main {
     flex-grow: 1;
+    padding: 12px 10px;
     display: flex;
     flex-direction: column;
 
-    @include desktop {
-      background-color: #4a4a4a;
-      color: #fff;
-      padding: 20px;
+    @include mq($from: landscape) {
+      padding: 16px 20px 20px 20px;
     }
   }
 
-  &__type {
-    background-color: #1fc6ff;
-    color: #fff;
-    font-size: $type-10;
+  &__tag {
+    font-size: 10px;
+    line-height: 12px;
     font-weight: 700;
-    line-height: 1;
-    display: flex;
-    padding: 7px 10px;
-    width: fit-content;
-    position: absolute;
-    right: 0;
-    top: 0;
+  }
 
-    @include desktop {
-      position: relative;
-      margin-bottom: 8px;
-      padding: 8px 12px;
-      border-radius: 2px;
+  &__chip {
+    @include mq($until: landscape) {
+      position: absolute;
+      top: 6px;
+      right: 6px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: fit-content;
+      border-radius: 4px;
+      padding: 4px 8px;
+
+      background-color: var(--accent-color);
+    }
+
+    @include mq($from: landscape) {
+      color: var(--accent-color);
+      margin-bottom: 4px;
+
     }
   }
 
-  &__title-wrap {
-    flex-grow: 1;
-    margin-bottom: 8px;
+  &__date {
+    display: none;
 
-    @include desktop { margin-bottom: 20px; }
+    @include mq($from: landscape) {
+      display: block;
+      position: absolute;
+      top: 8px;
+      right: 8px;
+    }
+
+    &--label {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 15px;
+      letter-spacing: -0.02em;
+
+      border-radius: 100rem;
+      padding: 4px 12px;
+      color: #fff;
+      background-color: #333;
+      border: 1px solid rgba(185, 185, 185, 0.5);
+    }
   }
 
   &__title {
-    font-size: $type--h-15;
-    line-height: 1.25;
-    margin-bottom: 0;
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 18px;
+    letter-spacing: -1px;
+    flex-grow: 1;
+    margin-bottom: 8px;
 
-    @include tablet {
-      font-size: $type--h-18;
-      font-weight: $type-700;
-      line-height: 1.4;
+    @include ellipsis(2);
+
+    @include mq($from: landscape) {
+      font-size: 18px;
+      line-height: 25px;
+      margin-bottom: 12px;
     }
   }
 
-  &__title-link {
-    display: block;
-    border-bottom: 1px solid transparent;
-    transition: border-bottom half($global-transition) ease-in-out;
-
-    @include desktop {
-      display: -webkit-box;
-      -webkit-box-orient: vertical;
-      -webkit-line-clamp: 2;
-    }
-  }
-
-  &__meta {
+  &__prices {
     display: flex;
     flex-direction: column;
-    row-gap: 10px;
-
+    row-gap: 2px;
   }
 
   &__price {
-    font-size: $type-10;
-    font-weight: $type-700;
-    line-height: 1;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    column-gap: 14px;
 
-    @include tablet { font-size: $type-14; }
-
-
-    .label {
-      color: #00ceff;
+    @include mq($from: landscape) {
+      column-gap: 20px;
     }
-  }
 
-  @include attention() {
-    .c-product-card__image-wrap {
-      transform: scale(1.01);
+    &:not(:last-child) {
+      color: #b9b9b9;
+    }
 
-      // Disble animation in Edge for support issues
-      @supports (-ms-ime-align: auto) {
-        transform: none;
+    &:last-child {
+      color: #000;
+    }
+
+    &--label {
+      font-size: 10px;
+      font-weight: 700;
+      line-height: 1.4;
+      max-width: 65px;
+
+      @include ellipsis(1);
+
+      @include mq($from: landscape) {
+        font-size: 12px;
+        max-width: 78px;
       }
     }
 
-    .c-product-card__title-link {
-      color: var(--color-text);
-      text-decoration: underline;
+    &--number {
+      font-size: 10px;
+      font-weight: 500;
+      line-height: 1.4;
+      flex-shrink: 0;
 
-      @include desktop {
+      @include mq($from: landscape) {
+        font-size: 15px;
+      }
+    }
+  }
+}
+
+[data-user-color-scheme="dark"] {
+  .c-product-card {
+    &__media {
+      background-color: #999;
+    }
+
+    &__main {
+      background-color: #4a4a4a;
+    }
+
+    &__title {
+      color: #fff;
+    }
+
+    &__price {
+      &:last-child {
         color: #fff;
       }
     }

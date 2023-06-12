@@ -1,0 +1,104 @@
+{{#contentFor "custom_body_class"}} shop-template{{/contentFor}}
+
+<div class="s-products__container">
+  <div class="s-products-hero">
+    <div class="o-grid">
+      <div class="o-grid__col o-grid__col--full">
+        {{> common/products/slide }}
+      </div>
+    </div>
+  </div>
+  <div class="s-products-main">
+    <div class="o-grid">
+      <div class="o-grid__col o-grid__col--full">
+        {{> common/products/navigation }}
+        {{> common/products/list static=static filter=filter }}
+        {{> common/products/pagination }}
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{{#contentFor "scripts"}}
+<script>
+const hasNextPage = () => {
+  var nextElement = document.querySelector('link[rel=next]');
+  if (nextElement) {
+    return true;
+  }
+  return false;
+}
+
+const disableLoadMore = () => {
+  var loadMoreAction = document.querySelectorAll('.js-load-more');
+  if (loadMoreAction.length) {
+    [].map.call(loadMoreAction, function (obj, idx) {
+      obj.classList.remove('active');
+    });
+  }
+}
+
+const activeLoadMore = () => {
+  var loadMoreAction = document.querySelectorAll('.js-load-more');
+  if (loadMoreAction.length) {
+    [].map.call(loadMoreAction, function (obj, idx) {
+      obj.classList.add('active');
+    });
+  }
+}
+
+const updateContents = (item) => {
+  var feedElement = document.querySelector('.js-content-feed');
+  if (feedElement) {
+    feedElement.appendChild(item);
+  }
+}
+
+//set load more event listener
+document.addEventListener("DOMContentLoaded", function(){
+  if(hasNextPage()) {
+    activeLoadMore();
+  }
+
+  var nextElement = document.querySelector('link[rel=next]');
+  var loadMoreAction = document.querySelectorAll('.js-load-more');
+  if (loadMoreAction.length) {
+    [].map.call(loadMoreAction, function (obj) {
+      obj.addEventListener('click', function (e) {
+        e.preventDefault();
+
+        if (hasNextPage() && nextElement) {
+          var xhr = new window.XMLHttpRequest();
+
+          xhr.open('GET', nextElement.href);
+          xhr.responseType = 'document';
+          xhr.onreadystatechange = () => {
+            if(xhr.readyState === XMLHttpRequest.DONE) {
+              const status = xhr.status;
+              if (status === 0 || (status >= 200 && status < 400)) {
+                var postElements = xhr.response.querySelectorAll('.js-content-card');
+                postElements.forEach(function (item) {
+                  updateContents(item);
+                });
+
+                var resNextElement = xhr.response.querySelector('link[rel=next]');
+                if (resNextElement) {
+                  nextElement.href = resNextElement.href;
+                } else {
+                  nextElement = false;
+                  disableLoadMore();
+                }
+              } else {
+                //False
+              }
+            }
+          };
+          xhr.send(null);
+        }
+      });
+    });
+  }
+});
+</script>
+{{/contentFor}}
