@@ -1,0 +1,27 @@
+{{#get "products" filter=filter include="tags" limit=@config.posts_per_page order="published_at desc" as |items|}}
+{{#if items}}
+<div class="s-products-carousel__container">
+  <div class="s-products-carousel__navigation">
+    <div class="swiper-button swiper-button-prev">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-6 h-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+      </svg>
+    </div>
+    <div class="swiper-button swiper-button-next">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-6 h-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+      </svg>
+    </div>
+  </div>
+  <div class="s-products-carousel">
+    <div class="swiper">
+      <div class="swiper-wrapper">
+      {{#foreach items}}
+        <div class="swiper-slide">{{> common/product/card no-js="true" }}</div>
+      {{/foreach}}
+      </div>
+    </div>
+  </div>
+</div>
+{{/if}}
+{{/get}}

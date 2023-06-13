@@ -1,0 +1,24 @@
+<div class="s-products-carousel-section{{#unless nav}} no-nav{{/unless}}{{#if title}} with-title{{/if}}">
+  <div class="s-products-carousel-section__header">
+    <div class="s-products-carousel-section__title">
+    {{#if section_url}}
+      <a class="s-products-carousel-section__link" href={{section_url}}>
+    {{/if}}
+      {{#if title}}{{title}}{{else}}Shop{{/if}}
+    {{#if section_url}}
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+        </svg>
+      </a>
+    {{/if}}
+    </div>
+    {{#if nav}}
+    <div class="s-products-carousel-section__navigation">
+      {{> common/products/navigation which=which }}
+    </div>
+    {{/if}}
+  </div>
+  <div class="s-products-carousel-section__carousel">
+    {{> common/products/carousel }}
+  </div>
+</div>
