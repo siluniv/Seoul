@@ -59,4 +59,14 @@
 
 {{> related-posts}}
 
-{{> shop }}
+{{!-- {{> shop }} --}}
+
+{{#match @custom.shop_display_status "on"}}
+<div class="c-home-products-carousel">
+  <div class="o-grid">
+    <div class="o-grid__col o-grid__col--full">
+      {{> common/products/carousel-section which="home" nav="true" }}
+    </div>
+  </div>
+</div>
+{{/match}}
