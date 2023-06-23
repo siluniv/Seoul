@@ -35,7 +35,7 @@
       {{#if payment.have_price_sale}}
       {{!-- 유료회원 가격 표시 --}}
       <div class="s-product-card__price">
-        <div class="s-product-card__price--label">무료회원 판매가</div>
+        <div class="s-product-card__price--label">일반회원 판매가</div>
         <div class="s-product-card__price--number">
         {{#if payment.have_price_original}}
           {{price payment.price_original currencyFormat="none" currency="KRW"}}{{#if payment.price_original}}원{{/if}}
@@ -70,7 +70,7 @@
     {{else}}
       {{!-- 비회원/무료회원 가격 표시 --}}
       <div class="s-product-card__price">
-        <div class="s-product-card__price--label">무료회원 판매가</div>
+        <div class="s-product-card__price--label">일반회원 판매가</div>
         <div class="s-product-card__price--number">
           {{price payment.price currencyFormat="none" currency="KRW"}}{{#if payment.price}}원{{/if}}
         </div>
